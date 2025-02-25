@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -36,7 +36,7 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -56,13 +56,38 @@
   .glass-card {
     @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
   }
-}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  .neuro-card {
+    @apply bg-neuro-base rounded-2xl p-8;
+    box-shadow: 20px 20px 60px #d1d1d1,
+               -20px -20px 60px #ffffff;
+  }
+
+  .neuro-button {
+    @apply bg-neuro-base rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    box-shadow: 5px 5px 15px #d1d1d1,
+               -5px -5px 15px #ffffff;
+  }
+
+  .neuro-button:hover {
+    box-shadow: inset 5px 5px 10px #d1d1d1,
+                inset -5px -5px 10px #ffffff;
+  }
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.product-image-container {
+  perspective: 1000px;
+}
+
+.product-image {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: translateZ(20px) rotateX(5deg);
 }

@@ -21,6 +21,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -56,6 +57,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        toast: {
+          DEFAULT: "#FDE1D3",
+          hover: "#FEC6A1",
+        },
+        neuro: {
+          light: "#ffffff",
+          base: "#f1f1f1",
+          shadow: "#d1d1d1",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -81,11 +91,22 @@ export default {
             transform: "translateY(0)",
           },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        tilt: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(-1deg)" },
+          "75%": { transform: "rotate(1deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out",
+        float: "float 3s ease-in-out infinite",
+        tilt: "tilt 5s ease-in-out infinite",
       },
     },
   },
