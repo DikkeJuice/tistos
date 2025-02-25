@@ -1,30 +1,27 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-const products = [
-  {
-    id: 1,
-    name: "Pulled Pork Tosti",
-    description: "Malse pulled pork met gesmolten kaas",
-    image: "/lovable-uploads/79d889cb-83a2-4a42-9c5a-d6f011e80a0a.png"
-  },
-  {
-    id: 2,
-    name: "Spinazie Feta Tosti",
-    description: "Verse spinazie met romige feta",
-    image: "/lovable-uploads/142dda9b-9cd0-47bf-9281-e0c878dad5b5.png"
-  },
-  {
-    id: 3,
-    name: "Kimchi Tosti",
-    description: "Pittige kimchi met gesmolten kaas",
-    image: "/lovable-uploads/3462b368-8047-497f-8358-53d2de513619.png"
-  }
-];
+import { toast } from "sonner";
+import { getSandwiches } from "@/lib/supabase/sandwiches";
+import type { Sandwich } from "@/types/sandwich";
 
 export const ProductShowcase = () => {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
+
+  useEffect(() => {
+    const fetchSandwiches = async () => {
+      try {
+        const data = await getSandwiches();
+        setSandwiches(data);
+      } catch (error) {
+        toast.error("Er ging iets mis bij het ophalen van de tosti's");
+        console.error(error);
+      }
+    };
+
+    fetchSandwiches();
+  }, []);
 
   return (
     <section className="py-24 bg-secondary/20">
@@ -34,11 +31,11 @@ export const ProductShowcase = () => {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {products.map((product) => (
+          {sandwiches.map((sandwich) => (
             <motion.div
-              key={product.id}
+              key={sandwich.id}
               className="relative glass-card rounded-2xl p-6 card-hover"
-              onHoverStart={() => setHoveredId(product.id)}
+              onHoverStart={() => setHoveredId(sandwich.id)}
               onHoverEnd={() => setHoveredId(null)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -46,14 +43,15 @@ export const ProductShowcase = () => {
             >
               <div className="aspect-square overflow-hidden rounded-xl mb-4">
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={sandwich.image_url}
+                  alt={sandwich.name}
                   className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
                 />
               </div>
               
-              <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-              <p className="text-muted-foreground">{product.description}</p>
+              <h3 className="text-xl font-bold mb-2">{sandwich.name}</h3>
+              <p className="text-muted-foreground">{sandwich.short_description}</p>
+              <p className="text-primary font-bold mt-2">€{sandwich.price.toFixed(2)}</p>
             </motion.div>
           ))}
         </div>
