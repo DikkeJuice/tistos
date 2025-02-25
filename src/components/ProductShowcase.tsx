@@ -96,7 +96,13 @@ export const ProductShowcase = () => {
                     {currentSandwich.short_description}
                   </motion.p>
 
-                  <motion.button className="w-full neuro-button bg-white/10 text-white hover:bg-white/20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}>
+                  <motion.button 
+                    className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors" 
+                    initial={{ opacity: 0 }} 
+                    animate={{ opacity: 1 }} 
+                    transition={{ delay: 0.5 }} 
+                    onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}
+                  >
                     Proeven
                   </motion.button>
                 </div>
@@ -160,3 +166,4 @@ export const ProductShowcase = () => {
       </AnimatePresence>
     </section>;
 };
+

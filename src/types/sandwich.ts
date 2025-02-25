@@ -7,6 +7,7 @@ export interface Sandwich {
   long_description?: string;
   tags: string[];
   price: number;
+  associated_color?: string;
   allergens: {
     vis: boolean;
     melk: boolean;
