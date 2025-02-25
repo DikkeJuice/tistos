@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
-import { X, ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 
 export const ProductShowcase = () => {
@@ -90,15 +90,6 @@ export const ProductShowcase = () => {
                     {currentSandwich.short_description}
                   </motion.p>
 
-                  <div className="flex justify-end">
-                    {hasAllergens(currentSandwich.allergens) && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <AlertCircle className="w-4 h-4" />
-                        <span>Bevat allergenen</span>
-                      </div>
-                    )}
-                  </div>
-
                   <motion.button className="w-full neuro-button text-primary hover:text-primary/80" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}>
                     Proeven
                   </motion.button>
@@ -149,13 +140,10 @@ export const ProductShowcase = () => {
                   {selectedSandwich.long_description || selectedSandwich.short_description}
                 </p>
                 {hasAllergens(selectedSandwich.allergens) && (
-                  <div className="flex flex-col gap-2 mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                    <div className="flex items-center gap-2 text-amber-700">
-                      <AlertCircle className="w-5 h-5" />
-                      <span className="font-medium">Allergenen informatie</span>
-                    </div>
-                    <p className="text-amber-600">
-                      Deze tosti bevat: {getAllergensList(selectedSandwich.allergens)}
+                  <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-gray-600">
+                      <span className="font-medium">Allergeneninformatie: </span>
+                      {getAllergensList(selectedSandwich.allergens)}
                     </p>
                   </div>
                 )}
