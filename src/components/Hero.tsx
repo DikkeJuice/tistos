@@ -8,15 +8,17 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-background -z-10" />
       
       <div className="text-center space-y-6 max-w-3xl mx-auto animate-fade-up">
-        <div className="inline-block bg-primary/10 px-4 py-1.5 rounded-full font-medium text-primary-foreground mb-6">
+        <div className="inline-block bg-primary/10 px-4 py-1.5 rounded-full font-medium text-primary mb-6">
           De lekkerste tosti's voor jouw evenement
         </div>
         
-        <h1 className="hero-text">
-          Ambachtelijke tosti's,
-          <br />
-          <span className="text-primary">onweerstaanbaar lekker</span>
-        </h1>
+        <div className="w-full max-w-lg mx-auto mb-8">
+          <img 
+            src="/lovable-uploads/9158a9dc-456b-4aea-9a31-095776b2d721.png" 
+            alt="Tistos Logo" 
+            className="w-full h-auto object-contain"
+          />
+        </div>
         
         <p className="text-lg md:text-xl text-muted-foreground">
           Van pulled pork tot spinazie-feta: onze unieke tosti's tillen jouw sportkantine of evenement naar een hoger niveau
