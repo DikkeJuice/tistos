@@ -92,12 +92,12 @@ export const ProductShowcase = () => {
               transition={{ duration: 0.5 }}
               className="w-full max-w-xl mx-auto"
             >
-              <div className="neuro-card product-card group">
-                <div className="product-image-container mb-6">
+              <div className="neuro-card product-card group overflow-visible">
+                <div className="product-image-container -mx-8 -mt-8 mb-6">
                   <motion.img
                     src={currentSandwich.image_url}
                     alt={currentSandwich.name}
-                    className="w-full h-64 object-cover rounded-xl shadow-lg product-image cursor-pointer"
+                    className="w-full h-64 object-cover rounded-xl cursor-pointer product-image"
                     whileHover={{ scale: 1.05 }}
                     onClick={() => handleImageClick(currentSandwich)}
                     loading="lazy"
@@ -193,7 +193,7 @@ export const ProductShowcase = () => {
                 <img
                   src={selectedSandwich.image_url}
                   alt={selectedSandwich.name}
-                  className="w-full h-80 object-cover rounded-xl shadow-xl mb-6"
+                  className="w-full h-80 object-cover rounded-xl mb-6"
                 />
                 <h3 className="text-2xl font-bold mb-4 font-poppins">{selectedSandwich.name}</h3>
                 <p className="text-gray-600 mb-4">{selectedSandwich.long_description || selectedSandwich.short_description}</p>
