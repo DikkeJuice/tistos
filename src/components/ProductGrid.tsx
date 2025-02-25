@@ -49,7 +49,7 @@ export const ProductGrid = () => {
           Ontdek al onze <span className="text-primary">tosti's</span>
         </h2>
         
-        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 scroll-smooth">
+        <div className="flex overflow-x-auto scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 scroll-smooth">
           {sandwiches.map((sandwich) => (
             <motion.div
               key={sandwich.id}
