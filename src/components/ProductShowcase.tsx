@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -5,11 +6,13 @@ import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
 import { X, ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
+
 export const ProductShowcase = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+
   useEffect(() => {
     const fetchSandwiches = async () => {
       try {
@@ -22,12 +25,15 @@ export const ProductShowcase = () => {
     };
     fetchSandwiches();
   }, []);
+
   const handlePrevious = () => {
     setCurrentIndex(prevIndex => prevIndex === 0 ? sandwiches.length - 1 : prevIndex - 1);
   };
+
   const handleNext = () => {
     setCurrentIndex(prevIndex => prevIndex === sandwiches.length - 1 ? 0 : prevIndex + 1);
   };
+
   const handleImageClick = (sandwich: Sandwich) => {
     if (isZoomed) {
       setIsZoomed(false);
@@ -35,10 +41,13 @@ export const ProductShowcase = () => {
       setSelectedSandwich(sandwich);
     }
   };
+
   const getAllergensList = (allergens: Sandwich['allergens']) => {
     return Object.entries(allergens).filter(([_, isPresent]) => isPresent).map(([allergen]) => allergen).join(", ");
   };
+
   const currentSandwich = sandwiches[currentIndex];
+
   if (!currentSandwich) {
     return <div className="flex items-center justify-center min-h-[400px]">
         <div className="neuro-card animate-pulse">
@@ -46,6 +55,7 @@ export const ProductShowcase = () => {
         </div>
       </div>;
   }
+
   return <section className="py-24 bg-neuro-base relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="section-title text-center mb-16 font-poppins">
@@ -98,17 +108,7 @@ export const ProductShowcase = () => {
                     {currentSandwich.short_description}
                   </motion.p>
 
-                  <div className="flex items-center justify-between">
-                    <motion.p className="text-primary text-2xl font-bold" initial={{
-                    opacity: 0
-                  }} animate={{
-                    opacity: 1
-                  }} transition={{
-                    delay: 0.4
-                  }}>
-                      €{currentSandwich.price.toFixed(2)}
-                    </motion.p>
-
+                  <div className="flex justify-end">
                     {Object.values(currentSandwich.allergens).some(value => value) && <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <AlertCircle className="w-4 h-4" />
                         <span>Bevat allergenen</span>
@@ -122,7 +122,7 @@ export const ProductShowcase = () => {
                 }} transition={{
                   delay: 0.5
                 }} onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}>Proeven
-                </motion.button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
