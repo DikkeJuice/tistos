@@ -122,7 +122,7 @@ export const ProductShowcase = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
             onClick={() => setSelectedSandwich(null)}
           >
             <motion.div
@@ -130,40 +130,38 @@ export const ProductShowcase = () => {
               animate={{ scale: 1, rotateX: 0 }}
               exit={{ scale: 0.95, rotateX: -90 }}
               transition={{ duration: 0.4 }}
-              className="neuro-card max-w-2xl w-full"
+              className="neuro-card max-w-2xl w-full relative m-4"
               onClick={e => e.stopPropagation()}
             >
-              <div className="relative">
-                <button
-                  onClick={() => setSelectedSandwich(null)}
-                  className="absolute -right-3 -top-3 p-2 neuro-button rounded-full hover:bg-gray-100 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-                <img
-                  src={selectedSandwich.image_url}
-                  alt={selectedSandwich.name}
-                  className="w-full h-80 object-contain rounded-xl mb-6"
-                />
-                <h3 className="text-2xl font-bold mb-4 font-poppins">
-                  {selectedSandwich.name}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {selectedSandwich.long_description || selectedSandwich.short_description}
-                </p>
-                {hasAllergens(selectedSandwich.allergens) && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <p className="text-gray-600">
-                      <span className="font-medium">Allergeneninformatie: </span>
-                      {getAllergensList(selectedSandwich.allergens)}
-                    </p>
-                  </div>
-                )}
-              </div>
+              <button
+                onClick={() => setSelectedSandwich(null)}
+                className="absolute right-4 top-4 p-2 bg-white/90 hover:bg-white rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <img
+                src={selectedSandwich.image_url}
+                alt={selectedSandwich.name}
+                className="w-full h-80 object-contain rounded-xl mb-6"
+              />
+              <h3 className="text-2xl font-bold mb-4 font-poppins pr-12">
+                {selectedSandwich.name}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {selectedSandwich.long_description || selectedSandwich.short_description}
+              </p>
+              {hasAllergens(selectedSandwich.allergens) && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <p className="text-gray-600">
+                    <span className="font-medium">Allergeneninformatie: </span>
+                    {getAllergensList(selectedSandwich.allergens)}
+                  </p>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </section>;
 };
-
