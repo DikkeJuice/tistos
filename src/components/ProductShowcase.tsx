@@ -29,6 +29,13 @@ export const ProductShowcase = () => {
     setSelectedSandwich(sandwich);
   };
 
+  const getAllergensList = (allergens: Sandwich['allergens']) => {
+    return Object.entries(allergens)
+      .filter(([_, isPresent]) => isPresent)
+      .map(([allergen]) => allergen)
+      .join(", ");
+  };
+
   return (
     <section className="py-24 bg-secondary/20 relative">
       <div className="container">
@@ -94,12 +101,12 @@ export const ProductShowcase = () => {
                   className="w-full h-80 object-cover rounded-xl shadow-xl mb-6"
                 />
                 <h3 className="text-2xl font-bold mb-4">{selectedSandwich.name}</h3>
-                <p className="text-gray-600 mb-4">{selectedSandwich.description || selectedSandwich.short_description}</p>
+                <p className="text-gray-600 mb-4">{selectedSandwich.long_description || selectedSandwich.short_description}</p>
                 <div className="flex justify-between items-center">
                   <p className="text-primary text-xl font-bold">€{selectedSandwich.price.toFixed(2)}</p>
                   {selectedSandwich.allergens && (
                     <p className="text-sm text-muted-foreground">
-                      Allergenen: {selectedSandwich.allergens.join(", ")}
+                      Allergenen: {getAllergensList(selectedSandwich.allergens)}
                     </p>
                   )}
                 </div>

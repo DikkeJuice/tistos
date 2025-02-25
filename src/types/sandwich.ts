@@ -7,7 +7,22 @@ export interface Sandwich {
   long_description?: string;
   tags: string[];
   price: number;
-  allergens: string[];
+  allergens: {
+    vis: boolean;
+    melk: boolean;
+    soja: boolean;
+    noten: boolean;
+    eieren: boolean;
+    gluten: boolean;
+    lupine: boolean;
+    pindas: boolean;
+    mosterd: boolean;
+    sulfiet: boolean;
+    selderij: boolean;
+    sesamzaad: boolean;
+    weekdieren: boolean;
+    schaaldieren: boolean;
+  };
   ingredients: string[];
   created_at: string;
 }
