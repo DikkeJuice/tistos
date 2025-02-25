@@ -161,8 +161,7 @@ export const ProductShowcase = () => {
                 <img src={selectedSandwich.image_url} alt={selectedSandwich.name} className="w-full h-80 object-contain rounded-xl mb-6" />
                 <h3 className="text-2xl font-bold mb-4 font-poppins">{selectedSandwich.name}</h3>
                 <p className="text-gray-600 mb-4">{selectedSandwich.long_description || selectedSandwich.short_description}</p>
-                <div className="flex justify-between items-center">
-                  <p className="text-primary text-xl font-bold">€{selectedSandwich.price.toFixed(2)}</p>
+                <div className="flex justify-end">
                   {selectedSandwich.allergens && <p className="text-sm text-muted-foreground">
                       Allergenen: {getAllergensList(selectedSandwich.allergens)}
                     </p>}
