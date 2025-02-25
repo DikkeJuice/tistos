@@ -12,6 +12,7 @@ export type Database = {
       sandwiches: {
         Row: {
           allergens: Json | null
+          associated_color: string | null
           created_at: string
           id: string
           image_url: string
@@ -24,6 +25,7 @@ export type Database = {
         }
         Insert: {
           allergens?: Json | null
+          associated_color?: string | null
           created_at?: string
           id?: string
           image_url: string
@@ -36,6 +38,7 @@ export type Database = {
         }
         Update: {
           allergens?: Json | null
+          associated_color?: string | null
           created_at?: string
           id?: string
           image_url?: string

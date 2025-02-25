@@ -76,7 +76,13 @@ export const ProductShowcase = () => {
             </Button>
 
             <motion.div key={currentSandwich.id} initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ duration: 0.5 }} className="w-full max-w-xl mx-auto">
-              <div className="neuro-card product-card group overflow-visible">
+              <div 
+                className="neuro-card product-card group overflow-visible"
+                style={{ 
+                  backgroundColor: currentSandwich.associated_color || '#DC5A32',
+                  color: 'white'
+                }}
+              >
                 <div className="relative w-[105%] -left-[2.5%] -mt-8 mb-6">
                   <motion.img src={currentSandwich.image_url} alt={currentSandwich.name} className="w-full h-64 object-contain rounded-xl cursor-pointer product-image" whileHover={{ scale: 1.05 }} onClick={() => handleImageClick(currentSandwich)} loading="lazy" />
                 </div>
@@ -86,11 +92,11 @@ export const ProductShowcase = () => {
                     {currentSandwich.name}
                   </motion.h3>
 
-                  <motion.p className="text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+                  <motion.p className="text-white/90" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
                     {currentSandwich.short_description}
                   </motion.p>
 
-                  <motion.button className="w-full neuro-button text-primary hover:text-primary/80" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}>
+                  <motion.button className="w-full neuro-button bg-white/10 text-white hover:bg-white/20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}>
                     Proeven
                   </motion.button>
                 </div>
