@@ -49,11 +49,11 @@ export const ProductGrid = () => {
           Ontdek al onze <span className="text-primary">tosti's</span>
         </h2>
         
-        <div className="flex overflow-x-auto scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 scroll-smooth">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sandwiches.map((sandwich) => (
             <motion.div
               key={sandwich.id}
-              className="group cursor-pointer flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-auto"
+              className="group cursor-pointer"
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedSandwich(sandwich)}
             >
