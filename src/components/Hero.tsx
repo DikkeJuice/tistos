@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 export const Hero = () => {
   return (
     <section className="min-h-screen relative overflow-hidden bg-[#f2805b]">
+      {/* Bottom image - positioned to cover entire section */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <img 
+          src="/lovable-uploads/db33a145-159d-4728-a644-cc0bb87b846d.png" 
+          alt="Person serving sandwich" 
+          className="w-full h-full object-contain object-bottom"
+        />
+      </div>
+      
       {/* Content container */}
       <div className="relative z-10 flex flex-col p-6 h-full">
         {/* Logo */}
@@ -29,15 +38,6 @@ export const Hero = () => {
             Order Now
           </Button>
         </div>
-      </div>
-      
-      {/* Bottom image - updated to ensure full height display */}
-      <div className="absolute bottom-0 left-0 right-0 w-full z-0 h-auto flex items-end">
-        <img 
-          src="/lovable-uploads/db33a145-159d-4728-a644-cc0bb87b846d.png" 
-          alt="Person serving sandwich" 
-          className="w-full h-auto max-h-[70vh] object-contain"
-        />
       </div>
     </section>
   );
