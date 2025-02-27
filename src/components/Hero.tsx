@@ -1,14 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
 export const Hero = () => {
-  return (
-    <section className="min-h-screen relative overflow-hidden flex items-center" 
-      style={{
-        background: "linear-gradient(135deg, #FF2424 0%, #C00000 100%)"
-      }}
-    >
+  return <section className="min-h-screen relative overflow-hidden flex items-center" style={{
+    background: "linear-gradient(135deg, #FF2424 0%, #C00000 100%)"
+  }}>
       {/* Abstract background patterns - subtle curves */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
         <div className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full border border-white"></div>
@@ -22,11 +17,7 @@ export const Hero = () => {
         <div className="flex flex-col justify-center items-center lg:items-start">
           {/* Logo - centered on mobile, left-aligned on desktop */}
           <div className="w-80 md:w-96 mb-6">
-            <img 
-              src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
-              alt="Tisto's Logo" 
-              className="w-full h-auto object-contain"
-            />
+            <img src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" alt="Tisto's Logo" className="w-full h-auto object-contain" />
           </div>
           
           {/* Main text content - center aligned on mobile, left on desktop */}
@@ -41,18 +32,11 @@ export const Hero = () => {
           
           {/* CTA Buttons - centered on mobile */}
           <div className="flex flex-wrap gap-4 mb-6 justify-center lg:justify-start">
-            <Button 
-              size="lg" 
-              className="bg-[#0074FA] hover:bg-[#0074FA]/90 text-white font-semibold shadow-[0_0_15px_rgba(0,116,250,0.3)]"
-            >
+            <Button size="lg" className="bg-[#0074FA] hover:bg-[#0074FA]/90 text-white font-semibold shadow-[0_0_15px_rgba(0,116,250,0.3)]">
               Bestel Nu
             </Button>
             
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-[#C00000] font-semibold transition-colors"
-            >
+            <Button size="lg" variant="outline" className="border-white hover:bg-white transition-colors font-semibold text-[#0075fc]">
               Ontdek Ons Verhaal
             </Button>
           </div>
@@ -78,42 +62,49 @@ export const Hero = () => {
         <div className="flex justify-center items-end pt-4 lg:pt-0 relative">
           {/* Main image - adjusted to ensure it's fully visible */}
           <div className="relative z-10 w-full max-w-md mx-auto">
-            <img 
-              src="/lovable-uploads/aa6ae7a7-bcd9-4005-92c9-64f0d9f6fb74.png"
-              alt="Footballer enjoying sandwich" 
-              className="w-full h-auto object-contain"
-            />
+            <img src="/lovable-uploads/aa6ae7a7-bcd9-4005-92c9-64f0d9f6fb74.png" alt="Footballer enjoying sandwich" className="w-full h-auto object-contain" />
           </div>
           
           {/* Floating labels - repositioned for better balance */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="absolute top-24 lg:top-20 right-10 lg:right-20 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.2,
+          duration: 0.5
+        }} className="absolute top-24 lg:top-20 right-10 lg:right-20 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20">
             <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
           </motion.div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="absolute top-[35%] right-4 lg:right-12 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.4,
+          duration: 0.5
+        }} className="absolute top-[35%] right-4 lg:right-12 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20">
             <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
           </motion.div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="absolute bottom-[35%] right-8 lg:right-16 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.6,
+          duration: 0.5
+        }} className="absolute bottom-[35%] right-8 lg:right-16 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20">
             <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
