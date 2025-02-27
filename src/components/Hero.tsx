@@ -40,7 +40,7 @@ export const Hero = () => {
           </p>
           
           {/* CTA Buttons - centered on mobile */}
-          <div className="flex flex-wrap gap-4 mb-6 justify-center lg:justify-start">
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <Button 
               size="lg" 
               className="bg-[#0074FA] hover:bg-[#0074FA]/90 text-white font-semibold shadow-[0_0_15px_rgba(0,116,250,0.3)]"
@@ -56,63 +56,16 @@ export const Hero = () => {
               Ontdek Ons Verhaal
             </Button>
           </div>
-          
-          {/* Additional info - centered on mobile */}
-          <div className="space-y-2 text-white/90 text-center lg:text-left">
-            <p className="flex items-center gap-2 justify-center lg:justify-start">
-              <span className="text-lg">✔️</span>
-              <span>Duizenden tevreden sportclubs</span>
-            </p>
-            <p className="flex items-center gap-2 justify-center lg:justify-start">
-              <span className="text-lg">🥇</span>
-              <span>Dé tosti-favoriet bij sportverenigingen</span>
-            </p>
-            <p className="flex items-center gap-2 justify-center lg:justify-start">
-              <span className="text-lg">💯</span>
-              <span>100% ambachtelijke smaak</span>
-            </p>
-          </div>
         </div>
         
-        {/* Right side: Toasted sandwich image with overlaid labels */}
+        {/* Right side: Toasted sandwich image */}
         <div className="flex items-center justify-center pt-4 lg:pt-0">
-          {/* Main image with the toast labels directly overlaid */}
           <div className="relative z-10 w-full max-w-[300px] md:max-w-md mx-auto">
             <img 
               src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png"
               alt="Toasted sandwich with melted cheese" 
               className="w-full h-auto object-contain"
             />
-            
-            {/* Label 1: Top sandwich */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="absolute top-[10%] left-[35%] transform -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
-            >
-              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Ambachtelijke Tosti's</span>
-            </motion.div>
-            
-            {/* Label 2: Middle sandwich */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="absolute top-[45%] right-[25%] transform -translate-x-1/4 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
-            >
-              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Perfecte Crunch</span>
-            </motion.div>
-            
-            {/* Label 3: Bottom sandwich */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute bottom-[15%] left-[40%] transform -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
-            >
-              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Favoriet bij Sportclubs</span>
-            </motion.div>
           </div>
         </div>
       </div>
