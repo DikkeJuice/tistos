@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center" 
       style={{
-        background: "linear-gradient(135deg, #FF2424 0%, #C00000 100%)"
+        background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
       }}
     >
       {/* Abstract background patterns - subtle curves */}
@@ -43,7 +43,7 @@ export const Hero = () => {
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <Button 
               size="lg" 
-              className="bg-[#0074FA] hover:bg-[#0074FA]/90 text-white font-semibold shadow-[0_0_15px_rgba(0,116,250,0.3)]"
+              className="bg-[#F43900] hover:bg-[#F43900]/90 text-white font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)]"
             >
               Bestel Nu
             </Button>
@@ -51,7 +51,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-[#C00000] font-semibold transition-colors"
+              className="border-white text-white hover:bg-white hover:text-[#F43900] font-semibold transition-colors"
             >
               Ontdek Ons Verhaal
             </Button>
