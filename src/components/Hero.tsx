@@ -72,7 +72,7 @@ export const Hero = () => {
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <Button 
               size="lg" 
-              className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900]"
+              className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900] hover:bg-[#f4b400] hover:scale-105 hover:shadow-[0_0_20px_rgba(244,57,0,0.5)] transition-all duration-300"
               onClick={scrollToProductGrid}
             >
               Ontdek onze tosti's
