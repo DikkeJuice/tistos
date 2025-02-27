@@ -36,7 +36,7 @@ export const Hero = () => {
         <img 
           src="/lovable-uploads/db33a145-159d-4728-a644-cc0bb87b846d.png" 
           alt="Person serving sandwich" 
-          className="w-full object-contain max-h-[60vh]"
+          className="w-full object-cover md:object-contain max-h-[60vh]"
         />
       </div>
     </section>
