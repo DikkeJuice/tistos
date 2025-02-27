@@ -20,8 +20,8 @@ export const Hero = () => {
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
         {/* Left side: Logo, Text & CTA */}
         <div className="flex flex-col justify-center">
-          {/* Logo */}
-          <div className="w-60 mb-8">
+          {/* Logo - increased size from w-60 to w-80 */}
+          <div className="w-80 md:w-96 mb-8">
             <img 
               src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
               alt="Tisto's Logo" 
@@ -117,3 +117,4 @@ export const Hero = () => {
     </section>
   );
 };
+
