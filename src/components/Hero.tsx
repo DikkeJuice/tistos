@@ -6,14 +6,14 @@ export const Hero = () => {
   return (
     <section className="min-h-screen relative overflow-hidden flex items-center" 
       style={{
-        background: "linear-gradient(135deg, #FDF5E6 0%, #FFC857 100%)"
+        background: "linear-gradient(135deg, #FF2424 0%, #C00000 100%)"
       }}
     >
       {/* Abstract background patterns - subtle curves */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
-        <div className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full border border-[#8C5E3C]"></div>
-        <div className="absolute bottom-[15%] right-[20%] w-64 h-64 rounded-full border border-[#4A90E2]"></div>
-        <div className="absolute top-[40%] right-[35%] w-40 h-40 rounded-full border border-[#8C5E3C]"></div>
+        <div className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full border border-[#0074FA]"></div>
+        <div className="absolute bottom-[15%] right-[20%] w-64 h-64 rounded-full border border-[#0074FA]"></div>
+        <div className="absolute top-[40%] right-[35%] w-40 h-40 rounded-full border border-[#0074FA]"></div>
       </div>
       
       {/* Main content container */}
@@ -30,11 +30,11 @@ export const Hero = () => {
           </div>
           
           {/* Main text content */}
-          <h1 className="text-[#8C5E3C] text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          <h1 className="text-[#0074FA] text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Tosti's die samenbrengen, waar je ook speelt
           </h1>
           
-          <p className="text-[#8C5E3C]/80 text-lg mb-8 max-w-lg">
+          <p className="text-[#0074FA]/80 text-lg mb-8 max-w-lg">
             Bij Tisto's draait alles om smaak en gezelligheid. Of je nu na een wedstrijd bijpraat, 
             een snelle snack zoekt of gewoon zin hebt in een écht goede tosti – wij zorgen voor de perfecte crunch.
           </p>
@@ -43,7 +43,7 @@ export const Hero = () => {
           <div className="flex flex-wrap gap-4 mb-8">
             <Button 
               size="lg" 
-              className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#8C5E3C] font-semibold shadow-[0_0_15px_rgba(255,200,87,0.3)]"
+              className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0074FA] font-semibold shadow-[0_0_15px_rgba(255,200,87,0.3)]"
             >
               Bestel Nu
             </Button>
@@ -51,14 +51,14 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-[#8C5E3C] text-[#8C5E3C] hover:bg-[#8C5E3C]/10 font-semibold"
+              className="border-[#0074FA] text-[#0074FA] hover:bg-[#0074FA]/10 font-semibold"
             >
               Ontdek Ons Verhaal
             </Button>
           </div>
           
           {/* Additional info */}
-          <div className="space-y-2 text-[#8C5E3C]/90">
+          <div className="space-y-2 text-[#0074FA]/90">
             <p className="flex items-center gap-2">
               <span className="text-lg">✔️</span>
               <span>Duizenden tevreden sportclubs</span>
@@ -92,7 +92,7 @@ export const Hero = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="absolute top-20 right-20 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(74,144,226,0.3)] border border-[#4A90E2]/20"
           >
-            <span className="text-[#8C5E3C] font-semibold">Ambachtelijke Tosti's</span>
+            <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
           </motion.div>
           
           <motion.div 
@@ -101,7 +101,7 @@ export const Hero = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="absolute top-[30%] right-12 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(74,144,226,0.3)] border border-[#4A90E2]/20"
           >
-            <span className="text-[#8C5E3C] font-semibold">Perfecte Crunch</span>
+            <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
           </motion.div>
           
           <motion.div 
@@ -110,7 +110,7 @@ export const Hero = () => {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="absolute bottom-[30%] right-16 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(74,144,226,0.3)] border border-[#4A90E2]/20"
           >
-            <span className="text-[#8C5E3C] font-semibold">Favoriet bij Sportclubs</span>
+            <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
           </motion.div>
         </div>
       </div>
