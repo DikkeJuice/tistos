@@ -15,7 +15,7 @@ export const Hero = () => {
         
         {/* Text content */}
         <div className="max-w-md text-center">
-          <p className="text-white text-lg mb-4">Unieke tosti's 
+          <p className="text-white mb-4 text-center text-lg mx-0 px-0">Unieke tosti's
 in een handomdraai</p>
           
           {/* CTA Button - using a contrasting color */}
