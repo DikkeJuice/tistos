@@ -12,7 +12,7 @@ export const Hero = () => {
           alt="Toasted sandwich background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F43900]/80 to-[#D13200]/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F43900]/60 to-[#D13200]/70"></div>
       </div>
 
       {/* Abstract background patterns - subtle curves (visible on desktop only) */}
