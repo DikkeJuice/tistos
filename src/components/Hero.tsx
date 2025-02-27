@@ -75,43 +75,43 @@ export const Hero = () => {
         </div>
         
         {/* Right side: Footballer image with floating labels */}
-        <div className="flex justify-start items-center pt-4 lg:pt-0 relative">
-          {/* Main image - moved more to the left */}
-          <div className="relative z-10 w-full max-w-xs ml-0 mr-auto">
+        <div className="flex items-center justify-center pt-4 lg:pt-0 relative">
+          {/* Main image with proper positioning */}
+          <div className="relative z-10 w-full max-w-[240px] md:max-w-xs mx-auto">
             <img 
               src="/lovable-uploads/cba29aba-20a7-4256-96e4-5d3a71fd60ec.png"
               alt="Footballer enjoying sandwich" 
               className="w-full h-auto object-contain"
             />
+            
+            {/* Floating labels with absolute positioning to ensure visibility */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="absolute top-[5%] -right-[80%] md:-right-[60%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+            >
+              <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="absolute top-[30%] -right-[70%] md:-right-[50%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+            >
+              <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="absolute bottom-[20%] -right-[90%] md:-right-[70%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+            >
+              <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
+            </motion.div>
           </div>
-          
-          {/* Floating labels - repositioned to ensure full visibility */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="absolute top-16 lg:top-10 right-1/4 lg:right-20 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
-            <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="absolute top-[30%] right-16 lg:right-24 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
-            <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="absolute bottom-[35%] right-20 lg:right-28 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
-          >
-            <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
-          </motion.div>
         </div>
       </div>
     </section>
