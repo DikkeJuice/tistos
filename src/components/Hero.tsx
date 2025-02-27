@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 export const Hero = () => {
   return <section className="min-h-screen relative overflow-hidden bg-[#f2805b]">
@@ -17,10 +18,12 @@ export const Hero = () => {
         <div className="max-w-md text-center">
           <p className="text-white mb-4 text-center text-lg mx-0 px-0">Unieke tosti's
 in een handomdraai</p>
-          
-          {/* CTA Button - using a contrasting color */}
-          <Button size="lg" className="bg-white text-[#f2805b] hover:bg-white/90 mt-4 font-semibold">Ontdek onze tosti's</Button>
         </div>
+      </div>
+      
+      {/* CTA Button - repositioned to left side and vertically centered */}
+      <div className="absolute left-6 top-1/2 transform -translate-y-1/2 z-10">
+        <Button size="lg" className="bg-white text-[#f2805b] hover:bg-white/90 font-semibold">Ontdek onze tosti's</Button>
       </div>
     </section>;
 };
