@@ -36,7 +36,7 @@ export const Hero = () => {
               Bestel Nu
             </Button>
             
-            <Button size="lg" variant="outline" className="border-white font-semibold transition-colors text-[#ffc826] bg-[#ff5d25]">
+            <Button size="lg" variant="outline" className="font-semibold transition-colors text-[#ffc826] bg-[#ff5d25]">
               Ontdek Ons Verhaal
             </Button>
           </div>
