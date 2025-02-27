@@ -35,8 +35,7 @@ export const Hero = () => {
           <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center lg:text-center md:text-6xl">Nooit meer saaie tosti's</h1>
           
           <p className="text-white/90 text-lg mb-6 max-w-lg text-center lg:text-center">
-            Bij Tisto's draait alles om smaak en gezelligheid. Of je nu na een wedstrijd bijpraat, 
-            een snelle snack zoekt of gewoon zin hebt in een écht goede tosti – wij zorgen voor de perfecte crunch.
+            Ontdek de perfecte tosti-ervaring bij Tisto's! Onze verse ingrediënten, knapperige broodjes en gesmolten kaas zorgen voor een onvergetelijke smaaksensatie. Ideaal voor een snelle lunch of gezellige borrel met vrienden.
           </p>
           
           {/* CTA Buttons - centered on mobile */}
