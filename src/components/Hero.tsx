@@ -74,13 +74,13 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Right side: Footballer image with floating labels */}
+        {/* Right side: Toasted sandwich image with floating labels */}
         <div className="flex items-center justify-center pt-4 lg:pt-0 relative">
           {/* Main image with proper positioning */}
-          <div className="relative z-10 w-full max-w-[240px] md:max-w-xs mx-auto">
+          <div className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto">
             <img 
-              src="/lovable-uploads/cba29aba-20a7-4256-96e4-5d3a71fd60ec.png"
-              alt="Footballer enjoying sandwich" 
+              src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png"
+              alt="Toasted sandwich with melted cheese" 
               className="w-full h-auto object-contain"
             />
             
