@@ -1,6 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ChefHat, Truck, Utensils } from "lucide-react";
+
 export const Hero = () => {
   return <section className="min-h-screen relative overflow-hidden flex items-center" style={{
     background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
@@ -34,9 +36,29 @@ export const Hero = () => {
           {/* Main text content - center aligned on mobile, left on desktop */}
           <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center lg:text-center md:text-6xl">Nooit meer saaie tosti's</h1>
           
-          <p className="text-white/90 text-lg mb-6 max-w-lg text-center lg:text-center">
-            Ontdek de perfecte tosti-ervaring bij Tisto's! Onze verse ingrediënten, knapperige broodjes en gesmolten kaas zorgen voor een onvergetelijke smaaksensatie. Ideaal voor een snelle lunch of gezellige borrel met vrienden.
-          </p>
+          {/* USPs replacing the paragraph */}
+          <div className="flex flex-col gap-3 mb-6 max-w-lg">
+            <div className="flex items-center gap-3 text-white/90 text-lg">
+              <div className="bg-[#ffc826]/20 p-2 rounded-full">
+                <Utensils size={20} className="text-[#ffc826]" />
+              </div>
+              <span>Meer dan 10 spannende smaken</span>
+            </div>
+            
+            <div className="flex items-center gap-3 text-white/90 text-lg">
+              <div className="bg-[#ffc826]/20 p-2 rounded-full">
+                <Truck size={20} className="text-[#ffc826]" />
+              </div>
+              <span>Wekelijks vers geleverd</span>
+            </div>
+            
+            <div className="flex items-center gap-3 text-white/90 text-lg">
+              <div className="bg-[#ffc826]/20 p-2 rounded-full">
+                <ChefHat size={20} className="text-[#ffc826]" />
+              </div>
+              <span>Eenvoudig te bereiden</span>
+            </div>
+          </div>
           
           {/* CTA Buttons - centered on mobile */}
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
