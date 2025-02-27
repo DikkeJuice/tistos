@@ -21,9 +21,7 @@ export const Hero = () => {
           </div>
           
           {/* Main text content - center aligned on mobile, left on desktop */}
-          <h1 className="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight text-center lg:text-center">
-            Tosti's die samenbrengen, waar je ook speelt
-          </h1>
+          <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center lg:text-center md:text-6xl">Nooit meer saaie tosti's</h1>
           
           <p className="text-white/90 text-lg mb-6 max-w-lg text-center lg:text-center">
             Bij Tisto's draait alles om smaak en gezelligheid. Of je nu na een wedstrijd bijpraat, 
