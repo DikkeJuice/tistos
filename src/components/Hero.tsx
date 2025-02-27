@@ -75,9 +75,9 @@ export const Hero = () => {
         </div>
         
         {/* Right side: Footballer image with floating labels */}
-        <div className="flex justify-center items-center pt-4 lg:pt-0 relative">
-          {/* Main image - adjusted to be smaller and match left content height */}
-          <div className="relative z-10 w-full max-w-sm mx-auto">
+        <div className="flex justify-start items-center pt-4 lg:pt-0 relative">
+          {/* Main image - moved more to the left */}
+          <div className="relative z-10 w-full max-w-xs ml-0 mr-auto">
             <img 
               src="/lovable-uploads/cba29aba-20a7-4256-96e4-5d3a71fd60ec.png"
               alt="Footballer enjoying sandwich" 
@@ -85,12 +85,12 @@ export const Hero = () => {
             />
           </div>
           
-          {/* Floating labels - repositioned for smaller image */}
+          {/* Floating labels - repositioned to ensure full visibility */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="absolute top-16 lg:top-10 right-10 lg:right-16 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
+            className="absolute top-16 lg:top-10 right-1/4 lg:right-20 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
           >
             <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
           </motion.div>
@@ -99,7 +99,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="absolute top-[30%] right-4 lg:right-10 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
+            className="absolute top-[30%] right-16 lg:right-24 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
           >
             <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
           </motion.div>
@@ -108,7 +108,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="absolute bottom-[35%] right-8 lg:right-14 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
+            className="absolute bottom-[35%] right-20 lg:right-28 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20"
           >
             <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
           </motion.div>
