@@ -9,7 +9,7 @@ export const Hero = () => {
         {/* Logo */}
         <div className="w-40 sm:w-48 mb-6">
           <img 
-            src="/lovable-uploads/07b9e436-8b25-4d62-8472-5a36e4c1f2a4.png" 
+            src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
             alt="Tisto's Logo" 
             className="w-full h-auto object-contain"
           />
