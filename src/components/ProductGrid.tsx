@@ -43,7 +43,7 @@ export const ProductGrid = () => {
   }
 
   return (
-    <section className="py-24 bg-neuro-base">
+    <section id="product-grid-section" className="py-24 bg-neuro-base">
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="section-title text-center mb-16 font-poppins">
           Ontdek al onze <span className="text-primary">tosti's</span>

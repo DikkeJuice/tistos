@@ -4,6 +4,14 @@ import { motion } from "framer-motion";
 import { ChefHat, Truck, Utensils } from "lucide-react";
 
 export const Hero = () => {
+  // Function to scroll to product grid section
+  const scrollToProductGrid = () => {
+    const productGridSection = document.querySelector('#product-grid-section');
+    if (productGridSection) {
+      productGridSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return <section className="min-h-screen relative overflow-hidden flex items-center" style={{
     background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
   }}>
@@ -62,8 +70,12 @@ export const Hero = () => {
           
           {/* CTA Buttons - centered on mobile */}
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <Button size="lg" className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900]">
-              Bestel Nu
+            <Button 
+              size="lg" 
+              className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900]"
+              onClick={scrollToProductGrid}
+            >
+              Ontdek onze tosti's
             </Button>
             
             <Button size="lg" variant="outline" className="font-semibold transition-colors text-[#ffc826] bg-[#ff5d25]">
