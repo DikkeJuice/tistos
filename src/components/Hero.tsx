@@ -14,9 +14,9 @@ export const Hero = () => {
       </div>
       
       {/* Content container */}
-      <div className="relative z-10 flex flex-col p-6 h-full">
-        {/* Logo */}
-        <div className="w-40 sm:w-48 mb-6">
+      <div className="relative z-10 flex flex-col items-center p-6 h-full">
+        {/* Logo - updated to be larger and centered */}
+        <div className="w-60 sm:w-72 mb-8">
           <img 
             src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
             alt="Tisto's Logo" 
@@ -25,7 +25,7 @@ export const Hero = () => {
         </div>
         
         {/* Text content */}
-        <div className="max-w-md">
+        <div className="max-w-md text-center">
           <p className="text-white text-lg mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
           </p>
