@@ -1,14 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
 export const Hero = () => {
-  return (
-    <section className="min-h-screen relative overflow-hidden flex items-center" 
-      style={{
-        background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
-      }}
-    >
+  return <section className="min-h-screen relative overflow-hidden flex items-center" style={{
+    background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
+  }}>
       {/* Abstract background patterns - subtle curves */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
         <div className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full border border-white"></div>
@@ -22,11 +17,7 @@ export const Hero = () => {
         <div className="flex flex-col justify-center items-center lg:items-start">
           {/* Logo - centered on mobile, left-aligned on desktop */}
           <div className="w-80 md:w-96 mb-6">
-            <img 
-              src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
-              alt="Tisto's Logo" 
-              className="w-full h-auto object-contain"
-            />
+            <img src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" alt="Tisto's Logo" className="w-full h-auto object-contain" />
           </div>
           
           {/* Main text content - center aligned on mobile, left on desktop */}
@@ -41,18 +32,11 @@ export const Hero = () => {
           
           {/* CTA Buttons - centered on mobile */}
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <Button 
-              size="lg" 
-              className="bg-[#F43900] hover:bg-[#F43900]/90 text-white font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)]"
-            >
+            <Button size="lg" className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900]">
               Bestel Nu
             </Button>
             
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-[#F43900] font-semibold transition-colors"
-            >
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#F43900] font-semibold transition-colors">
               Ontdek Ons Verhaal
             </Button>
           </div>
@@ -61,14 +45,9 @@ export const Hero = () => {
         {/* Right side: Toasted sandwich image */}
         <div className="flex items-center justify-center pt-4 lg:pt-0">
           <div className="relative z-10 w-full max-w-[300px] md:max-w-md mx-auto">
-            <img 
-              src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png"
-              alt="Toasted sandwich with melted cheese" 
-              className="w-full h-auto object-contain"
-            />
+            <img src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" alt="Toasted sandwich with melted cheese" className="w-full h-auto object-contain" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
