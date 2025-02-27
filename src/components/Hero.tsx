@@ -83,7 +83,7 @@ export const Hero = () => {
               variant="ghost" 
               className="font-semibold transition-all duration-300 text-[#ffc826] bg-[#ff5d25] hover:bg-[#e54d15] hover:scale-105 hover:shadow-[0_0_20px_rgba(244,57,0,0.5)]"
             >
-              Ontdek Ons Verhaal
+              Gratis proefpakket
             </Button>
           </div>
         </div>
