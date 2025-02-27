@@ -31,12 +31,12 @@ export const Hero = () => {
         </div>
       </div>
       
-      {/* Bottom image - full width */}
-      <div className="absolute bottom-0 left-0 right-0 w-full z-0">
+      {/* Bottom image - updated to ensure full height display */}
+      <div className="absolute bottom-0 left-0 right-0 w-full z-0 h-auto flex items-end">
         <img 
           src="/lovable-uploads/db33a145-159d-4728-a644-cc0bb87b846d.png" 
           alt="Person serving sandwich" 
-          className="w-full object-cover md:object-contain max-h-[60vh]"
+          className="w-full h-auto max-h-[70vh] object-contain"
         />
       </div>
     </section>
