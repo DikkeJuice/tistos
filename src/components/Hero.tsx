@@ -1,5 +1,7 @@
+
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
 export const Hero = () => {
   return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-background -z-10" />
@@ -9,8 +11,12 @@ export const Hero = () => {
           De lekkerste tosti's voor jouw evenement
         </div>
         
-        <div className="w-full max-w-lg mx-auto mb-8">
-          <img src="/lovable-uploads/9158a9dc-456b-4aea-9a31-095776b2d721.png" alt="Tistos Logo" className="w-full h-auto object-contain" />
+        <div className="w-full max-w-xl mx-auto mb-8">
+          <img 
+            src="/lovable-uploads/57192971-da23-4294-acbf-0fb2612abdbb.png" 
+            alt="Tistos service image" 
+            className="w-full h-auto object-contain rounded-lg shadow-md" 
+          />
         </div>
         
         <p className="text-lg md:text-xl text-muted-foreground">Unieke tosti's, klaar in een handomdraai</p>
