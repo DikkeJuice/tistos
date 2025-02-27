@@ -19,9 +19,7 @@ export const Hero = () => {
 in een handomdraai</p>
           
           {/* CTA Button - using a contrasting color */}
-          <Button size="lg" className="bg-white text-[#f2805b] hover:bg-white/90 mt-4 font-semibold">
-            Order Now
-          </Button>
+          <Button size="lg" className="bg-white text-[#f2805b] hover:bg-white/90 mt-4 font-semibold">Ontdek onze tosti's</Button>
         </div>
       </div>
     </section>;
