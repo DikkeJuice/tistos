@@ -50,7 +50,7 @@ export const Hero = () => {
               <div className="bg-[#ffc826]/20 p-2 rounded-full">
                 <Utensils size={20} className="text-[#ffc826]" />
               </div>
-              <span>Meer dan 10 spannende smaken</span>
+              <span>10 spannende smaken</span>
             </div>
             
             <div className="flex items-center gap-3 text-white/90 text-lg">
