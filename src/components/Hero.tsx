@@ -12,7 +12,7 @@ export const Hero = () => {
       </div>
       
       {/* Main content container */}
-      <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 mx-[20px] my-[20px]">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
         {/* Left side: Logo, Text & CTA */}
         <div className="flex flex-col justify-center items-center">
           {/* Logo - centered on mobile, left-aligned on desktop */}
