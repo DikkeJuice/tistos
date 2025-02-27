@@ -16,7 +16,7 @@ export const Hero = () => {
         <div className="absolute top-[40%] right-[35%] w-40 h-40 rounded-full border border-white"></div>
       </div>
       
-      {/* Main content container - reduced gap from 12 to 8 */}
+      {/* Main content container */}
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
         {/* Left side: Logo, Text & CTA */}
         <div className="flex flex-col justify-center items-center lg:items-start">
@@ -74,42 +74,44 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Right side: Toasted sandwich image with floating labels */}
-        <div className="flex items-center justify-center pt-4 lg:pt-0 relative">
-          {/* Main image with proper positioning */}
-          <div className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto">
+        {/* Right side: Toasted sandwich image with overlaid labels */}
+        <div className="flex items-center justify-center pt-4 lg:pt-0">
+          {/* Main image with the toast labels directly overlaid */}
+          <div className="relative z-10 w-full max-w-[300px] md:max-w-md mx-auto">
             <img 
               src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png"
               alt="Toasted sandwich with melted cheese" 
               className="w-full h-auto object-contain"
             />
             
-            {/* Floating labels with absolute positioning to ensure visibility */}
+            {/* Label 1: Top sandwich */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="absolute top-[5%] -right-[80%] md:-right-[60%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+              className="absolute top-[10%] left-[35%] transform -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
             >
-              <span className="text-[#0074FA] font-semibold">Ambachtelijke Tosti's</span>
+              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Ambachtelijke Tosti's</span>
             </motion.div>
             
+            {/* Label 2: Middle sandwich */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="absolute top-[30%] -right-[70%] md:-right-[50%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+              className="absolute top-[45%] right-[25%] transform -translate-x-1/4 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
             >
-              <span className="text-[#0074FA] font-semibold">Perfecte Crunch</span>
+              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Perfecte Crunch</span>
             </motion.div>
             
+            {/* Label 3: Bottom sandwich */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute bottom-[20%] -right-[90%] md:-right-[70%] bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
+              className="absolute bottom-[15%] left-[40%] transform -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-[0_0_15px_rgba(0,116,250,0.3)] border border-[#0074FA]/20 whitespace-nowrap"
             >
-              <span className="text-[#0074FA] font-semibold">Favoriet bij Sportclubs</span>
+              <span className="text-[#0074FA] font-semibold text-sm md:text-base">Favoriet bij Sportclubs</span>
             </motion.div>
           </div>
         </div>
