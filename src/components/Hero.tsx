@@ -79,7 +79,7 @@ export const Hero = () => {
           {/* Main image - adjusted to ensure it's fully visible */}
           <div className="relative z-10 w-full max-w-md mx-auto">
             <img 
-              src="/lovable-uploads/aa6ae7a7-bcd9-4005-92c9-64f0d9f6fb74.png"
+              src="/lovable-uploads/cba29aba-20a7-4256-96e4-5d3a71fd60ec.png"
               alt="Footballer enjoying sandwich" 
               className="w-full h-auto object-contain"
             />
