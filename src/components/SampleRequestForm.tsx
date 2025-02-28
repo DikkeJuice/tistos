@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Check, AlertCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const SampleRequestForm = () => {
   const { toast } = useToast();
@@ -26,10 +27,27 @@ export const SampleRequestForm = () => {
     setIsSubmitting(true);
 
     try {
-      // In a real implementation, this would send data to a backend
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Insert data into Supabase
+      const { data, error } = await supabase
+        .from("sample_requests")
+        .insert([
+          {
+            company_name: formData.companyName,
+            contact_person: formData.contactPerson,
+            email: formData.email,
+            phone: formData.phone || null, // Convert empty string to null
+            member_count: formData.memberCount || null, // Convert empty string to null
+            comments: formData.comments || null, // Convert empty string to null
+          },
+        ]);
 
+      if (error) {
+        console.error("Error submitting form:", error);
+        throw error;
+      }
+
+      console.log("Form submitted successfully:", data);
+      
       toast({
         title: "Aanvraag verzonden!",
         description: "We nemen binnen 24 uur contact met je op.",
@@ -46,6 +64,7 @@ export const SampleRequestForm = () => {
         comments: "",
       });
     } catch (error) {
+      console.error("Error:", error);
       toast({
         title: "Er is iets misgegaan",
         description: "Probeer het later opnieuw of neem contact met ons op.",
