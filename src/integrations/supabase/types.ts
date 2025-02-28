@@ -89,7 +89,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      create_webhook_for_sample_requests: {
+        Args: {
+          function_url: string
+          service_role_key: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
