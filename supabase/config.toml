@@ -1,1 +1,8 @@
+
 project_id = "pxodqmbszdlzzkywkaop"
+
+[functions.track-sample-request]
+verify_jwt = false
+
+[functions.setup-webhook-trigger]
+verify_jwt = false
