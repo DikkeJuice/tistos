@@ -1,138 +1,92 @@
 
-import "https://deno.land/x/xhr@0.1.0/mod.ts";
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.7.1";
+// Follow this setup guide to integrate the Deno language server with your editor:
+// https://deno.land/manual/getting_started/setup_your_environment
+// This enables autocomplete, go to definition, etc.
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Google Analytics configuration
-const GA_MEASUREMENT_ID = 'G-GYK03Q8K37'; // Replace with your actual Measurement ID if different
-const GA_API_SECRET = '0e4zeMNRQD6Y61XADfKdgA';
-
-// Supabase configuration - using environment variables
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-
-serve(async (req) => {
+Deno.serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
-
+  
   try {
-    const { record, type } = await req.json();
-
-    // Only process 'INSERT' operations
-    if (type !== 'INSERT') {
-      return new Response(JSON.stringify({ success: true, message: "Event ignored - not an INSERT" }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+    const GA_MEASUREMENT_ID = 'G-HTY2JPV7C1'; // Your Google Analytics Measurement ID
+    const GA_API_SECRET = '0e4zeMNRQD6Y61XADfKdgA'; // Your Measurement Protocol API Secret
+    
+    // Parse the webhook payload
+    const payload = await req.json();
+    console.log('Received webhook payload:', payload);
+    
+    // Extract the record data - this is from the INSERT event
+    const record = payload.record;
+    if (!record || !record.id) {
+      throw new Error('Invalid webhook payload: missing record data');
     }
-
-    console.log("Processing new sample request:", record);
-
-    // Generate a client ID (using the record ID for consistency)
-    const clientId = record.id.replace(/-/g, '');
-
-    // Build the Google Analytics payload
-    const payload = {
-      client_id: clientId,
-      events: [
-        {
-          name: "proefpakket_aangevraagd",
-          params: {
-            id: record.id,
-            company_name: record.company_name
-          }
+    
+    // Prepare the event data for Google Analytics
+    const eventData = {
+      client_id: record.id, // Use the record ID as the client ID
+      events: [{
+        name: 'sample_request',
+        params: {
+          request_id: record.id,
+          company_name: record.company_name || 'Not provided',
+          member_count: record.member_count || 'Not provided'
         }
-      ]
+      }]
     };
-
-    console.log("Sending event to Google Analytics:", JSON.stringify(payload));
-
-    // Send the event to Google Analytics using the Measurement Protocol
-    const gaResponse = await fetch(
+    
+    console.log('Preparing to send event to Google Analytics:', eventData);
+    
+    // Send the event to Google Analytics Measurement Protocol
+    const response = await fetch(
       `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(eventData)
       }
     );
-
-    if (!gaResponse.ok) {
-      const errorText = await gaResponse.text();
-      console.error("Error sending to GA:", errorText);
-      throw new Error(`Failed to send event to Google Analytics: ${errorText}`);
-    }
-
-    console.log("Successfully sent event to Google Analytics for sample request:", record.id);
-
-    return new Response(JSON.stringify({ 
-      success: true, 
-      message: "Event successfully sent to Google Analytics",
-      recordId: record.id 
-    }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    console.error("Error in track-sample-request function:", error);
     
-    // Implement retry logic for network errors
-    if (error.message && error.message.includes('network')) {
-      // In a production environment, you would implement a more sophisticated
-      // retry mechanism, potentially with exponential backoff
-      console.log("Network error detected, will retry once...");
-      
-      try {
-        // Simple retry logic - in production you'd want a more robust solution
-        const { record } = await req.json();
-        const clientId = record.id.replace(/-/g, '');
-        
-        const payload = {
-          client_id: clientId,
-          events: [
-            {
-              name: "proefpakket_aangevraagd",
-              params: {
-                id: record.id,
-                company_name: record.company_name
-              }
-            }
-          ]
-        };
-        
-        // Retry the request
-        await fetch(
-          `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-          }
-        );
-        
-        console.log("Retry successful for sample request:", record.id);
-      } catch (retryError) {
-        console.error("Retry also failed:", retryError);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Error sending to Google Analytics:', errorText);
+      throw new Error(`Failed to send event to Google Analytics: ${response.status} ${response.statusText}`);
+    }
+    
+    console.log('Successfully sent event to Google Analytics');
+    
+    return new Response(
+      JSON.stringify({ success: true, message: 'Event tracked successfully' }),
+      { 
+        headers: { 
+          ...corsHeaders,
+          'Content-Type': 'application/json' 
+        } 
       }
-    }
+    );
+  } catch (error) {
+    console.error('Error in track-sample-request function:', error);
     
-    return new Response(JSON.stringify({ 
-      success: false, 
-      error: error.message 
-    }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({ 
+        success: false, 
+        error: error.message || 'Unknown error occurred' 
+      }),
+      { 
+        status: 500,
+        headers: { 
+          ...corsHeaders,
+          'Content-Type': 'application/json' 
+        } 
+      }
+    );
   }
-});
+})
