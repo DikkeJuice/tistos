@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Check, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-interface SampleRequestFormProps {
+export interface SampleRequestFormProps {
   onSuccess?: () => void;
 }
 
