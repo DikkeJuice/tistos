@@ -8,10 +8,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const GA_MEASUREMENT_ID = Deno.env.get('GA_MEASUREMENT_ID');
-const GA_API_SECRET = Deno.env.get('GA_API_SECRET');
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL');
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+// Google Analytics configuration
+const GA_MEASUREMENT_ID = 'G-GYK03Q8K37'; // Replace with your actual Measurement ID if different
+const GA_API_SECRET = '0e4zeMNRQD6Y61XADfKdgA';
+
+// Supabase configuration - using environment variables
+const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -31,7 +34,7 @@ serve(async (req) => {
       });
     }
 
-    console.log("Processing new sample request:", record.id);
+    console.log("Processing new sample request:", record);
 
     // Generate a client ID (using the record ID for consistency)
     const clientId = record.id.replace(/-/g, '');
@@ -50,7 +53,9 @@ serve(async (req) => {
       ]
     };
 
-    // Send the event to Google Analytics
+    console.log("Sending event to Google Analytics:", JSON.stringify(payload));
+
+    // Send the event to Google Analytics using the Measurement Protocol
     const gaResponse = await fetch(
       `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
       {
@@ -89,7 +94,34 @@ serve(async (req) => {
       try {
         // Simple retry logic - in production you'd want a more robust solution
         const { record } = await req.json();
-        // Retry code would go here...
+        const clientId = record.id.replace(/-/g, '');
+        
+        const payload = {
+          client_id: clientId,
+          events: [
+            {
+              name: "proefpakket_aangevraagd",
+              params: {
+                id: record.id,
+                company_name: record.company_name
+              }
+            }
+          ]
+        };
+        
+        // Retry the request
+        await fetch(
+          `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          }
+        );
+        
+        console.log("Retry successful for sample request:", record.id);
       } catch (retryError) {
         console.error("Retry also failed:", retryError);
       }

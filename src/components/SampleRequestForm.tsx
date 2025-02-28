@@ -5,7 +5,11 @@ import { useToast } from "@/hooks/use-toast";
 import { Check, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-export const SampleRequestForm = () => {
+interface SampleRequestFormProps {
+  onSuccess?: () => void;
+}
+
+export const SampleRequestForm = ({ onSuccess }: SampleRequestFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -63,6 +67,11 @@ export const SampleRequestForm = () => {
         memberCount: "",
         comments: "",
       });
+      
+      // Call onSuccess callback if provided
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       console.error("Error:", error);
       toast({
