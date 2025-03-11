@@ -97,7 +97,7 @@ export const SampleRequestForm = ({
             <img 
               src="/lovable-uploads/562ec1a5-85c0-426d-bebc-17dfbd4bb4c6.png" 
               alt="Tistos Proefpakket" 
-              className="max-w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 max-h-[300px]"
+              className="max-w-full h-auto rounded-lg max-h-[300px]"
             />
           </div>
 
