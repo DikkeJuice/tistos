@@ -225,20 +225,6 @@ export const SampleRequestForm = ({ onSuccess }: SampleRequestFormProps) => {
               </div>
             </div>
 
-            <div className="mt-8 bg-orange-50 rounded-lg p-4 border border-orange-100">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <AlertCircle className="h-5 w-5 text-orange-500" />
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm text-orange-800">
-                    <strong>Beperkte proefpakketten beschikbaar</strong> – wees er snel bij! 
-                    We bereiden alle pakketten met zorg, dus bestel snel om teleurstelling te voorkomen.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div className="mt-6 flex items-start">
               <div className="flex-shrink-0">
                 <Check className="h-5 w-5 text-green-500" />
@@ -255,3 +241,4 @@ export const SampleRequestForm = ({ onSuccess }: SampleRequestFormProps) => {
     </section>
   );
 };
+
