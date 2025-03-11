@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Check, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+
 export interface SampleRequestFormProps {
   onSuccess?: () => void;
 }
+
 export const SampleRequestForm = ({
   onSuccess
 }: SampleRequestFormProps) => {
@@ -21,6 +23,7 @@ export const SampleRequestForm = ({
     memberCount: "",
     comments: ""
   });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -31,11 +34,11 @@ export const SampleRequestForm = ({
       [name]: value
     }));
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // Insert data into Supabase
       const {
         data,
         error
@@ -44,10 +47,8 @@ export const SampleRequestForm = ({
         contact_person: formData.contactPerson,
         email: formData.email,
         phone: formData.phone || null,
-        // Convert empty string to null
         member_count: formData.memberCount || null,
-        // Convert empty string to null
-        comments: formData.comments || null // Convert empty string to null
+        comments: formData.comments || null
       }]);
       if (error) {
         console.error("Error submitting form:", error);
@@ -60,7 +61,6 @@ export const SampleRequestForm = ({
         variant: "default"
       });
 
-      // Reset form
       setFormData({
         companyName: "",
         contactPerson: "",
@@ -70,7 +70,6 @@ export const SampleRequestForm = ({
         comments: ""
       });
 
-      // Call onSuccess callback if provided
       if (onSuccess) {
         onSuccess();
       }
@@ -85,12 +84,21 @@ export const SampleRequestForm = ({
       setIsSubmitting(false);
     }
   };
+
   return <section className="py-16 bg-gradient-to-br from-orange-50 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold text-orange-600 mb-4 md:text-4xl">Proef het zelf!</h2>
             <p className="text-lg text-gray-700">Vul het formulier in en ontvang een gratis proefpakket met 10 heerlijke tosti's.</p>
+          </div>
+
+          <div className="flex justify-center mb-10">
+            <img 
+              src="/lovable-uploads/562ec1a5-85c0-426d-bebc-17dfbd4bb4c6.png" 
+              alt="Tistos Proefpakket" 
+              className="max-w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 max-h-[300px]"
+            />
           </div>
 
           <div className="bg-white rounded-xl p-8 shadow-xl border border-orange-100">
