@@ -90,7 +90,7 @@ export const SampleRequestForm = ({
         <div className="max-w-3xl mx-auto">
           <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold text-orange-600 mb-4 md:text-4xl">Proef het zelf!</h2>
-            <p className="text-lg text-gray-700">Vul het formulier in en ontvang een gratis proefpakket met</p>
+            <p className="text-lg text-gray-700">Vul het formulier in en ontvang een gratis proefpakket met 10 heerlijke tosti's.</p>
           </div>
 
           <div className="bg-white rounded-xl p-8 shadow-xl border border-orange-100">
