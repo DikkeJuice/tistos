@@ -89,7 +89,7 @@ export const SampleRequestForm = ({
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold text-orange-600 mb-4 md:text-2xl">Proef het zelf!</h2>
+            <h2 className="text-3xl font-bold text-orange-600 mb-4 md:text-4xl">Proef het zelf!</h2>
             <p className="text-lg text-gray-700">Vul het formulier in en ontvang een gratis proefpakket met</p>
           </div>
 
