@@ -15,8 +15,8 @@ const Index = () => {
       <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-            {/* Image - Left on desktop, above button on mobile */}
-            <div className="md:order-1 md:w-1/3 flex justify-center md:justify-start">
+            {/* On desktop: Left side image */}
+            <div className="hidden md:flex md:order-1 md:w-1/3 justify-center md:justify-start">
               <img 
                 src="/lovable-uploads/bfc5609b-b140-44df-9041-4adb9b909b79.png" 
                 alt="Tisto's Proefpakket" 
@@ -24,7 +24,7 @@ const Index = () => {
               />
             </div>
             
-            {/* Text content - Right on desktop, top on mobile */}
+            {/* Text content */}
             <div className="md:order-2 md:w-2/3 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-orange-600">
                 Klaar om Tisto's te ontdekken?
@@ -33,6 +33,15 @@ const Index = () => {
                 Vraag nu een gratis proefpakket aan voor jouw bedrijf of sportvereniging 
                 en ervaar de kwaliteit en smaak van onze ambachtelijke tosti's.
               </p>
+              
+              {/* On mobile: Show image between paragraph and button */}
+              <div className="md:hidden flex justify-center mb-8">
+                <img 
+                  src="/lovable-uploads/bfc5609b-b140-44df-9041-4adb9b909b79.png" 
+                  alt="Tisto's Proefpakket" 
+                  className="w-full max-w-[220px] h-auto object-contain"
+                />
+              </div>
               
               {/* Button */}
               <Link to="/sample-request">
