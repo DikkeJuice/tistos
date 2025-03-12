@@ -12,7 +12,7 @@ export const Hero = () => {
     }
   };
 
-  return <section className="min-h-screen relative overflow-hidden flex items-center" style={{
+  return <section className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{
     background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
   }}>
       {/* Mobile background - tosti image with overlay */}
@@ -33,7 +33,7 @@ export const Hero = () => {
       </div>
       
       {/* Main content container */}
-      <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 mx-[20px] my-[20px] py-[20px]">
+      <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 my-[20px] py-[20px] mx-auto">
         {/* Left side: Logo, Text & CTA */}
         <div className="flex flex-col justify-center items-center">
           {/* Logo - centered on mobile, left-aligned on desktop */}
@@ -42,7 +42,7 @@ export const Hero = () => {
           </div>
           
           {/* Main text content - center aligned on mobile, left on desktop */}
-          <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center lg:text-center md:text-6xl">Nooit meer saaie tosti's</h1>
+          <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center md:text-6xl">Nooit meer saaie tosti's</h1>
           
           {/* USPs replacing the paragraph */}
           <div className="flex flex-col gap-3 mb-6 max-w-lg">
@@ -68,8 +68,8 @@ export const Hero = () => {
             </div>
           </div>
           
-          {/* CTA Buttons - centered on mobile */}
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+          {/* CTA Buttons - centered */}
+          <div className="flex flex-wrap gap-4 justify-center">
             <Button 
               size="lg" 
               className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900] hover:bg-[#f4b400] hover:scale-105 hover:shadow-[0_0_20px_rgba(244,57,0,0.5)] transition-all duration-300"
