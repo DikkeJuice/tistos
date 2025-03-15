@@ -9,7 +9,7 @@ export const Header = () => {
         {/* Logo - left aligned */}
         <Link to="/" className="relative z-10">
           <img 
-            src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" 
+            src="/lovable-uploads/22be7021-d285-4434-b86f-58683f43fb1f.png" 
             alt="Tisto's Logo" 
             className="h-12 md:h-16 w-auto object-contain" 
           />
