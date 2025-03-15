@@ -49,8 +49,8 @@ export const Hero = () => {
           {/* Right side: Product image */}
           <div className="flex items-center justify-center order-1 lg:order-2 relative">
             <div className="relative w-full max-w-md mx-auto">
-              {/* Main product image */}
-              <div className="animate-float shadow-xl rounded-lg overflow-hidden">
+              {/* Main product image - removed shadow-xl and animate-float classes */}
+              <div className="rounded-lg overflow-hidden">
                 <img 
                   src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" 
                   alt="Tosti met gesmolten kaas" 
