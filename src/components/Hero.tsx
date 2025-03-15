@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { ChefHat, Truck, Utensils } from "lucide-react";
 
 export const Hero = () => {
@@ -13,7 +12,7 @@ export const Hero = () => {
   };
 
   return <section className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{
-    background: "linear-gradient(135deg, #F43900 0%, #D13200 100%)"
+    background: "#f9bd74"
   }}>
       {/* Mobile background - tosti image with overlay */}
       <div className="absolute inset-0 lg:hidden overflow-hidden">
@@ -22,7 +21,7 @@ export const Hero = () => {
           alt="Toasted sandwich background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F43900]/60 to-[#D13200]/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f9bd74]/60 to-[#f9bd74]/70"></div>
       </div>
 
       {/* Abstract background patterns - subtle curves (visible on desktop only) */}
