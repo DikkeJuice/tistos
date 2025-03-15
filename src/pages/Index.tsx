@@ -1,10 +1,13 @@
+
 import { Hero } from "@/components/Hero";
 import { ProductGrid } from "@/components/ProductGrid";
 import { USPSection } from "@/components/USPSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
 const Index = () => {
-  return <main className="min-h-screen">
+  return (
+    <main className="min-h-screen">
       <Hero />
       <ProductGrid />
       <USPSection />
@@ -39,6 +42,8 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </main>;
+    </main>
+  );
 };
+
 export default Index;

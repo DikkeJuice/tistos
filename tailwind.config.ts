@@ -22,6 +22,8 @@ export default {
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        merriweather: ['Merriweather', 'serif'],
+        'work-sans': ['Work Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -100,13 +102,18 @@ export default {
           "25%": { transform: "rotate(-1deg)" },
           "75%": { transform: "rotate(1deg)" },
         },
+        bounce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-25%)" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out",
-        float: "float 3s ease-in-out infinite",
-        tilt: "tilt 5s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
+        "tilt": "tilt 5s ease-in-out infinite",
+        "bounce": "bounce 2s infinite",
       },
     },
   },

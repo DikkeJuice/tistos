@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
-import { ChefHat, Truck, Utensils } from "lucide-react";
+import { Header } from "./Header";
+import { ArrowDown } from "lucide-react";
 
 export const Hero = () => {
   // Function to scroll to product grid section
@@ -11,88 +12,70 @@ export const Hero = () => {
     }
   };
 
-  return <section className="min-h-screen relative overflow-hidden flex items-center justify-center" style={{
-    background: "#f9bd74"
-  }}>
-      {/* Mobile background - tosti image with overlay */}
-      <div className="absolute inset-0 lg:hidden overflow-hidden">
-        <img 
-          src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" 
-          alt="Toasted sandwich background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f9bd74]/60 to-[#f9bd74]/70"></div>
-      </div>
-
-      {/* Abstract background patterns - subtle curves (visible on desktop only) */}
-      <div className="absolute inset-0 overflow-hidden opacity-10 hidden lg:block">
-        <div className="absolute top-[10%] left-[5%] w-96 h-96 rounded-full border border-white"></div>
-        <div className="absolute bottom-[15%] right-[20%] w-64 h-64 rounded-full border border-white"></div>
-        <div className="absolute top-[40%] right-[35%] w-40 h-40 rounded-full border border-white"></div>
+  return (
+    <section className="min-h-screen relative overflow-hidden flex flex-col" style={{
+      background: "#f9bd74"
+    }}>
+      {/* Header */}
+      <Header />
+      
+      {/* Main hero content */}
+      <div className="flex flex-1 items-center">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-24 md:py-16">
+          {/* Left side: Text & CTA */}
+          <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
+            {/* Main headline */}
+            <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
+              Nooit meer saaie tosti's
+            </h1>
+            
+            {/* Description paragraph */}
+            <p className="font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
+              Ontdek onze unieke collectie van verse tosti-ingrediënten direct bij jou thuis bezorgd. 
+              Elke week nieuwe smaken voor een smaakvolle lunch of snelle maaltijd.
+            </p>
+            
+            {/* CTA Button */}
+            <div className="flex justify-center lg:justify-start mb-12 md:mb-8">
+              <Button 
+                onClick={scrollToProductGrid}
+                className="bg-[rgb(255,92,83)] hover:bg-[rgb(230,70,61)] text-white text-lg px-8 py-6 rounded-md shadow-md transition-all duration-300 hover:scale-105 font-['Work_Sans'] font-medium"
+              >
+                Kies de box die bij je past
+              </Button>
+            </div>
+          </div>
+          
+          {/* Right side: Product image */}
+          <div className="flex items-center justify-center order-1 lg:order-2 relative">
+            <div className="relative w-full max-w-md mx-auto">
+              {/* Main product image */}
+              <div className="animate-float shadow-xl rounded-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" 
+                  alt="Tosti met gesmolten kaas" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              
+              {/* Price badge */}
+              <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-md">
+                <div className="flex flex-col items-center">
+                  <span className="line-through text-gray-400 text-sm">€15,95</span>
+                  <span className="text-[rgb(255,92,83)] font-bold text-xl">€12,95</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
-      {/* Main content container */}
-      <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 my-[20px] py-[20px] mx-auto">
-        {/* Left side: Logo, Text & CTA */}
-        <div className="flex flex-col justify-center items-center">
-          {/* Logo - centered on mobile, left-aligned on desktop */}
-          <div className="w-80 md:w-96 mb-6">
-            <img src="/lovable-uploads/79eb4b29-9072-4121-988c-5da7e15293aa.png" alt="Tisto's Logo" className="w-full h-auto object-contain" />
-          </div>
-          
-          {/* Main text content - center aligned on mobile, left on desktop */}
-          <h1 className="text-white text-4xl font-bold mb-4 leading-tight text-center md:text-6xl">Nooit meer saaie tosti's</h1>
-          
-          {/* USPs replacing the paragraph */}
-          <div className="flex flex-col gap-3 mb-6 max-w-lg">
-            <div className="flex items-center gap-3 text-white/90 text-lg">
-              <div className="bg-[#ffc826]/20 p-2 rounded-full">
-                <Utensils size={20} className="text-[#ffc826]" />
-              </div>
-              <span>10 spannende smaken</span>
-            </div>
-            
-            <div className="flex items-center gap-3 text-white/90 text-lg">
-              <div className="bg-[#ffc826]/20 p-2 rounded-full">
-                <Truck size={20} className="text-[#ffc826]" />
-              </div>
-              <span>Wekelijks vers geleverd</span>
-            </div>
-            
-            <div className="flex items-center gap-3 text-white/90 text-lg">
-              <div className="bg-[#ffc826]/20 p-2 rounded-full">
-                <ChefHat size={20} className="text-[#ffc826]" />
-              </div>
-              <span>Eenvoudig te bereiden</span>
-            </div>
-          </div>
-          
-          {/* CTA Buttons - centered */}
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="font-semibold shadow-[0_0_15px_rgba(244,57,0,0.3)] bg-[#ffc826] text-[#f43900] hover:bg-[#f4b400] hover:scale-105 hover:shadow-[0_0_20px_rgba(244,57,0,0.5)] transition-all duration-300"
-              onClick={scrollToProductGrid}
-            >
-              Ontdek onze tosti's
-            </Button>
-            
-            <Button 
-              size="lg" 
-              variant="ghost" 
-              className="font-semibold transition-all duration-300 text-[#ffc826] bg-[#ff5d25] hover:bg-[#e54d15] hover:scale-105 hover:shadow-[0_0_20px_rgba(244,57,0,0.5)]"
-            >
-              Gratis proefpakket
-            </Button>
-          </div>
-        </div>
-        
-        {/* Right side: Toasted sandwich image (only visible on desktop) */}
-        <div className="hidden lg:flex items-center justify-center pt-4 lg:pt-0">
-          <div className="relative z-10 w-full max-w-[300px] md:max-w-md mx-auto">
-            <img src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" alt="Toasted sandwich with melted cheese" className="w-full h-auto object-contain" />
-          </div>
-        </div>
+      {/* Down arrow */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
+          <ArrowDown size={32} />
+        </button>
       </div>
-    </section>;
+    </section>
+  );
 };
