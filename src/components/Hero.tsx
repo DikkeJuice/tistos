@@ -37,8 +37,8 @@ export const Hero = () => {
                 Elke week nieuwe smaken voor een smaakvolle lunch of snelle maaltijd.
               </p>
               
-              {/* CTA Button */}
-              <div className="flex justify-center lg:justify-start mb-12 md:mb-8">
+              {/* CTA Button - hidden on mobile */}
+              <div className="hidden md:flex justify-center lg:justify-start mb-12 md:mb-8">
                 <Button 
                   onClick={scrollToProductGrid}
                   className="bg-[rgb(255,92,83)] hover:bg-[rgb(230,70,61)] text-white text-lg px-8 py-6 rounded-md shadow-md transition-all duration-300 hover:scale-105 font-['Work_Sans'] font-medium"
