@@ -22,6 +22,8 @@ export const Hero = () => {
         className="relative overflow-hidden flex flex-col" 
         style={{
           background: "#f9bd74",
+          // On mobile, subtract the height of the sticky bar (approx 84px)
+          // to make the hero fit between top of screen and sticky bar
           minHeight: isMobile ? "calc(100vh - 84px)" : "100vh"
         }}
       >
@@ -30,25 +32,22 @@ export const Hero = () => {
         
         {/* Main hero content */}
         <div className="flex flex-1 items-center">
-          <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-12 md:py-16">
+          <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-24 md:py-16">
             {/* Left side: Text & CTA */}
             <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
-              {/* Main headline - hidden on mobile */}
-              {!isMobile && (
-                <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
-                  Nooit meer saaie tosti's
-                </h1>
-              )}
-              
-              {/* SVG title on mobile */}
-              {isMobile && (
+              {/* Mobile: SVG logo, Desktop: Main headline */}
+              {isMobile ? (
                 <div className="mb-6">
                   <img 
                     src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//jebentfantostisch.svg" 
                     alt="Je bent fantostisch" 
-                    className="w-full h-auto"
+                    className="w-full h-auto mx-auto"
                   />
                 </div>
+              ) : (
+                <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
+                  Nooit meer saaie tosti's
+                </h1>
               )}
               
               {/* Description paragraph - hidden on mobile */}
@@ -70,21 +69,21 @@ export const Hero = () => {
             
             {/* Right side: Product image */}
             <div className="flex items-center justify-center order-1 lg:order-2 relative">
-              <div className="w-full h-0 pb-[75%] md:pb-[70%] relative">
+              <div className="relative w-full max-w-md mx-auto">
                 {/* Main product image */}
-                <div className="absolute inset-0 rounded-lg overflow-hidden">
+                <div className="rounded-lg overflow-hidden">
                   <img 
                     src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" 
                     alt="Tosti met gesmolten kaas" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-cover"
                   />
-                  
-                  {/* Price badge */}
-                  <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-md">
-                    <div className="flex flex-col items-center">
-                      <span className="line-through text-gray-400 text-sm">€15,95</span>
-                      <span className="text-[rgb(255,92,83)] font-bold text-xl">€12,95</span>
-                    </div>
+                </div>
+                
+                {/* Price badge */}
+                <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-md">
+                  <div className="flex flex-col items-center">
+                    <span className="line-through text-gray-400 text-sm">€15,95</span>
+                    <span className="text-[rgb(255,92,83)] font-bold text-xl">€12,95</span>
                   </div>
                 </div>
               </div>
@@ -92,7 +91,7 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Down arrow */}
+        {/* Down arrow - smaller, with subtler animation and positioned 20px above sticky bar on mobile */}
         <div className={`absolute left-1/2 transform -translate-x-1/2 ${isMobile ? 'bottom-[74px]' : 'bottom-6'}`}>
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={24} className="animate-pulse" />
