@@ -35,10 +35,20 @@ export const Hero = () => {
           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-24 md:py-16">
             {/* Left side: Text & CTA */}
             <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
-              {/* Main headline */}
-              <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
-                Nooit meer saaie tosti's
-              </h1>
+              {/* Mobile: SVG logo, Desktop: Main headline */}
+              {isMobile ? (
+                <div className="mb-6">
+                  <img 
+                    src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//jebentfantostisch.svg" 
+                    alt="Je bent fantostisch" 
+                    className="w-full h-auto mx-auto"
+                  />
+                </div>
+              ) : (
+                <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
+                  Nooit meer saaie tosti's
+                </h1>
+              )}
               
               {/* Description paragraph - hidden on mobile */}
               <p className="hidden md:block font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
