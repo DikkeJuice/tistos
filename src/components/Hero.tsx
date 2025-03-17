@@ -81,8 +81,8 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Down arrow - now visible on both mobile and desktop */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* Down arrow - position higher on mobile to avoid sticky bar */}
+        <div className={`absolute left-1/2 transform -translate-x-1/2 animate-bounce ${isMobile ? 'bottom-24' : 'bottom-6'}`}>
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={32} />
           </button>
