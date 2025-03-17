@@ -33,29 +33,14 @@ export const Hero = () => {
         {/* Main hero content */}
         <div className="flex flex-1 items-center">
           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-24 md:py-16">
-            {/* Left side: Text & CTA */}
-            <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
-              {/* Main headline */}
-              <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
-                Nooit meer saaie tosti's
-              </h1>
-              
-              {/* Description paragraph - hidden on mobile */}
-              <p className="hidden md:block font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
-                Ontdek onze unieke collectie van verse tosti-ingrediënten direct bij jou thuis bezorgd. 
-                Elke week nieuwe smaken voor een smaakvolle lunch of snelle maaltijd.
-              </p>
-              
-              {/* CTA Button - hidden on mobile */}
-              <div className="hidden md:flex justify-center lg:justify-start mb-12 md:mb-8">
-                <Button 
-                  onClick={scrollToProductGrid}
-                  className="bg-[rgb(255,92,83)] hover:bg-[rgb(230,70,61)] text-white text-lg px-8 py-6 rounded-md shadow-md transition-all duration-300 hover:scale-105 font-['Work_Sans'] font-medium"
-                >
-                  Kies de box die bij je past
-                </Button>
+            {/* Title on mobile - shown above image */}
+            {isMobile && (
+              <div className="mb-4 text-center">
+                <h1 className="font-['Merriweather'] font-bold text-4xl text-[#003A40] leading-tight">
+                  Nooit meer saaie tosti's
+                </h1>
               </div>
-            </div>
+            )}
             
             {/* Right side: Product image */}
             <div className="flex items-center justify-center order-1 lg:order-2 relative">
@@ -76,6 +61,32 @@ export const Hero = () => {
                     <span className="text-[rgb(255,92,83)] font-bold text-xl">€12,95</span>
                   </div>
                 </div>
+              </div>
+            </div>
+            
+            {/* Left side: Text & CTA */}
+            <div className="flex flex-col justify-center order-2 lg:order-1 text-center lg:text-left">
+              {/* Main headline - hidden on mobile since we show it above */}
+              {!isMobile && (
+                <h1 className="font-['Merriweather'] font-bold text-4xl md:text-5xl lg:text-6xl text-[#003A40] leading-tight mb-6">
+                  Nooit meer saaie tosti's
+                </h1>
+              )}
+              
+              {/* Description paragraph - hidden on mobile */}
+              <p className="hidden md:block font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
+                Ontdek onze unieke collectie van verse tosti-ingrediënten direct bij jou thuis bezorgd. 
+                Elke week nieuwe smaken voor een smaakvolle lunch of snelle maaltijd.
+              </p>
+              
+              {/* CTA Button - hidden on mobile */}
+              <div className="hidden md:flex justify-center lg:justify-start mb-12 md:mb-8">
+                <Button 
+                  onClick={scrollToProductGrid}
+                  className="bg-[rgb(255,92,83)] hover:bg-[rgb(230,70,61)] text-white text-lg px-8 py-6 rounded-md shadow-md transition-all duration-300 hover:scale-105 font-['Work_Sans'] font-medium"
+                >
+                  Kies de box die bij je past
+                </Button>
               </div>
             </div>
           </div>
