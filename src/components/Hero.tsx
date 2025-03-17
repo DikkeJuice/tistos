@@ -22,9 +22,9 @@ export const Hero = () => {
         className="relative overflow-hidden flex flex-col" 
         style={{
           background: "#f9bd74",
-          // On mobile, subtract the height of the sticky bar (approx 84px)
-          // to make the hero fit between top of screen and sticky bar
-          minHeight: isMobile ? "calc(100vh - 84px)" : "100vh"
+          // On mobile, use viewport height minus header (approx 64px) and sticky bar (84px)
+          // This ensures the hero section fits perfectly in the viewport
+          minHeight: isMobile ? "calc(100vh - 148px)" : "100vh"
         }}
       >
         {/* Header */}
@@ -92,8 +92,8 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Down arrow - smaller, with subtler animation and positioned 20px above sticky bar on mobile */}
-        <div className={`absolute left-1/2 transform -translate-x-1/2 ${isMobile ? 'bottom-[74px]' : 'bottom-6'}`}>
+        {/* Down arrow - smaller, with subtler animation and positioned at the bottom */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 bottom-4">
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={24} className="animate-pulse" />
           </button>
