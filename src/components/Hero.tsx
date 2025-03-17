@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Header } from "./Header";
 import { ArrowDown } from "lucide-react";
 import { MobileStickyBar } from "./MobileStickyBar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Hero = () => {
+  const isMobile = useIsMobile();
+
   // Function to scroll to product grid section
   const scrollToProductGrid = () => {
     const productGridSection = document.querySelector('#product-grid-section');
@@ -15,9 +18,15 @@ export const Hero = () => {
 
   return (
     <>
-      <section className="min-h-screen relative overflow-hidden flex flex-col" style={{
-        background: "#f9bd74"
-      }}>
+      <section 
+        className="relative overflow-hidden flex flex-col" 
+        style={{
+          background: "#f9bd74",
+          // On mobile, subtract the height of the sticky bar (approx 84px)
+          // to make the hero fit between top of screen and sticky bar
+          minHeight: isMobile ? "calc(100vh - 84px)" : "100vh"
+        }}
+      >
         {/* Header */}
         <Header />
         
@@ -72,8 +81,8 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Down arrow */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* Down arrow - hide on mobile since we have the sticky CTA */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={32} />
           </button>
