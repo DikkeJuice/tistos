@@ -81,8 +81,8 @@ export const Hero = () => {
           </div>
         </div>
         
-        {/* Down arrow - hide on mobile since we have the sticky CTA */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+        {/* Down arrow - now visible on both mobile and desktop */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={32} />
           </button>
