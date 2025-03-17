@@ -31,8 +31,8 @@ export const Hero = () => {
                 Nooit meer saaie tosti's
               </h1>
               
-              {/* Description paragraph */}
-              <p className="font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
+              {/* Description paragraph - hidden on mobile */}
+              <p className="hidden md:block font-['Work_Sans'] text-lg md:text-xl text-[#003A40]/90 mb-8 max-w-xl mx-auto lg:mx-0">
                 Ontdek onze unieke collectie van verse tosti-ingrediënten direct bij jou thuis bezorgd. 
                 Elke week nieuwe smaken voor een smaakvolle lunch of snelle maaltijd.
               </p>
