@@ -45,12 +45,22 @@ export const Hero = () => {
             {/* Right side: Product image */}
             <div className="flex items-center justify-center order-1 lg:order-2 relative">
               <div className="relative w-full max-w-md mx-auto">
-                {/* Main product image */}
-                <div className="rounded-lg overflow-hidden">
+                {/* Main product image - with responsive scaling */}
+                <div className="rounded-lg overflow-hidden" style={{
+                  // Make image container maintain aspect ratio and scale with available space
+                  maxHeight: isMobile ? "calc(100vh - 280px)" : "auto", // Leave space for title and arrow
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
                   <img 
                     src="/lovable-uploads/4fefac10-95b4-48cb-9830-baa771465b58.png" 
                     alt="Tosti met gesmolten kaas" 
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-contain"
+                    style={{
+                      maxHeight: "100%",
+                      maxWidth: "100%"
+                    }}
                   />
                 </div>
                 
