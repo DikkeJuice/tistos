@@ -82,7 +82,7 @@ export const Hero = () => {
         </div>
         
         {/* Down arrow - smaller, with subtler animation and positioned 20px above sticky bar on mobile */}
-        <div className={`absolute left-1/2 transform -translate-x-1/2 ${isMobile ? 'bottom-[94px]' : 'bottom-6'}`}>
+        <div className={`absolute left-1/2 transform -translate-x-1/2 ${isMobile ? 'bottom-[74px]' : 'bottom-6'}`}>
           <button onClick={scrollToProductGrid} className="text-[#003A40] hover:text-[#005a63] transition-colors">
             <ArrowDown size={24} className="animate-pulse" />
           </button>
