@@ -43,7 +43,7 @@ export const USPSection = () => {
                 <img 
                   src={usp.imageUrl} 
                   alt={usp.title} 
-                  className="w-14 h-14 object-contain"
+                  className="w-42 h-42 object-contain"
                 />
               </div>
               
