@@ -9,8 +9,8 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Hero />
-      <ProductGrid />
       <USPSection />
+      <ProductGrid />
       
       <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-4">
