@@ -4,9 +4,11 @@ import { toast } from "sonner";
 import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
 import { X } from "lucide-react";
+
 export const ProductGrid = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
+
   useEffect(() => {
     const fetchSandwiches = async () => {
       try {
@@ -19,12 +21,15 @@ export const ProductGrid = () => {
     };
     fetchSandwiches();
   }, []);
+
   const getAllergensList = (allergens: Sandwich['allergens']) => {
     return Object.entries(allergens).filter(([_, isPresent]) => isPresent).map(([allergen]) => allergen.charAt(0).toUpperCase() + allergen.slice(1)).join(", ");
   };
+
   const hasAllergens = (allergens: Sandwich['allergens']) => {
     return Object.values(allergens).some(isPresent => isPresent);
   };
+
   if (!sandwiches.length) {
     return <div className="flex items-center justify-center min-h-[400px]">
       <div className="neuro-card animate-pulse">
@@ -32,6 +37,7 @@ export const ProductGrid = () => {
       </div>
     </div>;
   }
+
   return <section id="product-grid-section" className="py-24 bg-[#ffe7d1]">
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="section-title text-center mb-16 font-poppins">
@@ -51,7 +57,7 @@ export const ProductGrid = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold font-poppins">
+                  <h3 className="text-xl font-bold font-merriweather">
                     {sandwich.name}
                   </h3>
                   <p className="text-white/90 text-sm">
