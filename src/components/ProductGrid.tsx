@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
-import { X } from "lucide-react";
+import { X, Flag } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 export const ProductGrid = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
@@ -55,6 +56,16 @@ export const ProductGrid = () => {
           }}>
                 <div className="relative w-[105%] -left-[2.5%] -mt-8 mb-6">
                   <img src={sandwich.image_url} alt={sandwich.name} className="w-full h-48 object-contain rounded-xl transition-transform group-hover:scale-105" loading="lazy" />
+                  
+                  {/* Halal icon badge */}
+                  {sandwich.tags && sandwich.tags.includes("halal") && (
+                    <div className="absolute bottom-2 right-2">
+                      <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
+                        <Flag className="h-3 w-3" />
+                        <span className="text-xs">Halal</span>
+                      </Badge>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-4">
@@ -101,6 +112,17 @@ export const ProductGrid = () => {
               </button>
 
               <img src={selectedSandwich.image_url} alt={selectedSandwich.name} className="w-full h-80 object-contain rounded-xl mb-6" />
+              
+              {/* Show halal badge in modal if applicable */}
+              {selectedSandwich.tags && selectedSandwich.tags.includes("halal") && (
+                <div className="mb-4">
+                  <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
+                    <Flag className="h-3 w-3" />
+                    <span>Halal</span>
+                  </Badge>
+                </div>
+              )}
+              
               <h3 className="text-2xl font-bold mb-4 font-poppins pr-12">
                 {selectedSandwich.name}
               </h3>
