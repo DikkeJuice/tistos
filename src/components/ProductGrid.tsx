@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
-import { X, Flag } from "lucide-react";
+import { X } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 export const ProductGrid = () => {
@@ -61,7 +61,11 @@ export const ProductGrid = () => {
                   {sandwich.tags && sandwich.tags.includes("halal") && (
                     <div className="absolute bottom-2 right-2">
                       <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
-                        <Flag className="h-3 w-3" />
+                        <img 
+                          src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" 
+                          alt="Halal" 
+                          className="h-3 w-3" 
+                        />
                         <span className="text-xs">Halal</span>
                       </Badge>
                     </div>
@@ -117,7 +121,11 @@ export const ProductGrid = () => {
               {selectedSandwich.tags && selectedSandwich.tags.includes("halal") && (
                 <div className="mb-4">
                   <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
-                    <Flag className="h-3 w-3" />
+                    <img 
+                      src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" 
+                      alt="Halal" 
+                      className="h-3 w-3" 
+                    />
                     <span>Halal</span>
                   </Badge>
                 </div>
