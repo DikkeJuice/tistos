@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -60,7 +61,7 @@ export const ProductGrid = () => {
                   <h3 className="text-xl font-bold font-merriweather">
                     {sandwich.name}
                   </h3>
-                  <p className="text-white/90 text-sm">
+                  <p className="text-white/90 text-sm font-['Work_Sans']">
                     {sandwich.short_description}
                   </p>
                   <button className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors" onClick={e => {
