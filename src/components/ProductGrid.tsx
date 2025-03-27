@@ -64,7 +64,7 @@ export const ProductGrid = () => {
                   <p className="text-white/90 text-sm font-['Work_Sans']">
                     {sandwich.short_description}
                   </p>
-                  <button className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors" onClick={e => {
+                  <button className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors font-['Work_Sans']" onClick={e => {
                 e.stopPropagation();
                 toast.success(`${sandwich.name} toegevoegd aan winkelwagen`);
               }}>
