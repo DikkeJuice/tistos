@@ -6,12 +6,14 @@ import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
+import { useSampleBox } from "@/contexts/SampleBoxContext";
 
 export const ProductShowcase = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const { addToSampleBox, isSampleBoxFull, isInSampleBox } = useSampleBox();
 
   useEffect(() => {
     const fetchSandwiches = async () => {
@@ -40,6 +42,24 @@ export const ProductShowcase = () => {
     } else {
       setSelectedSandwich(sandwich);
     }
+  };
+  
+  const handleAddToSampleBox = (e: React.MouseEvent, sandwich: Sandwich) => {
+    e.stopPropagation();
+    
+    if (isSampleBoxFull) {
+      toast.error("Je proefpakket zit vol! Maximaal 10 tosti's.");
+      return;
+    }
+    
+    if (isInSampleBox(sandwich.id)) {
+      toast.info(`${sandwich.name} zit al in je proefpakket`);
+      return;
+    }
+    
+    // Add to sample box
+    addToSampleBox(sandwich);
+    toast.success(`${sandwich.name} toegevoegd aan je proefpakket`);
   };
 
   const getAllergensList = (allergens: Sandwich['allergens']) => {
@@ -101,9 +121,10 @@ export const ProductShowcase = () => {
                     initial={{ opacity: 0 }} 
                     animate={{ opacity: 1 }} 
                     transition={{ delay: 0.5 }} 
-                    onClick={() => toast.success(`${currentSandwich.name} toegevoegd aan winkelwagen`)}
+                    onClick={(e) => handleAddToSampleBox(e, currentSandwich)}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    Proeven
+                    {isInSampleBox(currentSandwich.id) ? "Toegevoegd" : "Proeven"}
                   </motion.button>
                 </div>
               </div>
@@ -159,6 +180,24 @@ export const ProductShowcase = () => {
                   </p>
                 </div>
               )}
+              
+              <div className="mt-6">
+                <motion.button 
+                  className="w-full px-6 py-3 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold transition-colors" 
+                  onClick={e => {
+                    handleAddToSampleBox(e, selectedSandwich);
+                    setSelectedSandwich(null);
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  disabled={isInSampleBox(selectedSandwich.id) || isSampleBoxFull}
+                >
+                  {isInSampleBox(selectedSandwich.id) 
+                    ? "Toegevoegd aan proefpakket" 
+                    : isSampleBoxFull 
+                      ? "Proefpakket is vol" 
+                      : "Toevoegen aan proefpakket"}
+                </motion.button>
+              </div>
             </motion.div>
           </motion.div>
         )}

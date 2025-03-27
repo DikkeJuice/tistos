@@ -1,15 +1,20 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { getSandwiches } from "@/lib/supabase/sandwiches";
 import type { Sandwich } from "@/types/sandwich";
 import { X } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { useSampleBox } from "@/contexts/SampleBoxContext";
 
 export const ProductGrid = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
+  const { addToSampleBox, isSampleBoxFull, isInSampleBox } = useSampleBox();
+  
+  // Reference to store the position of the clicked button for animation
+  const clickPositionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const fetchSandwiches = async () => {
@@ -30,6 +35,27 @@ export const ProductGrid = () => {
 
   const hasAllergens = (allergens: Sandwich['allergens']) => {
     return Object.values(allergens).some(isPresent => isPresent);
+  };
+  
+  const handleAddToSampleBox = (e: React.MouseEvent, sandwich: Sandwich) => {
+    e.stopPropagation();
+    
+    if (isSampleBoxFull) {
+      toast.error("Je proefpakket zit vol! Maximaal 10 tosti's.");
+      return;
+    }
+    
+    if (isInSampleBox(sandwich.id)) {
+      toast.info(`${sandwich.name} zit al in je proefpakket`);
+      return;
+    }
+    
+    // Store the position of the clicked button for animation
+    clickPositionRef.current = { x: e.clientX, y: e.clientY };
+    
+    // Add to sample box
+    addToSampleBox(sandwich);
+    toast.success(`${sandwich.name} toegevoegd aan je proefpakket`);
   };
 
   if (!sandwiches.length) {
@@ -92,12 +118,13 @@ export const ProductGrid = () => {
                   <p className="text-white/90 text-sm font-['Work_Sans']">
                     {sandwich.short_description}
                   </p>
-                  <button className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors font-['Work_Sans']" onClick={e => {
-                e.stopPropagation();
-                toast.success(`${sandwich.name} toegevoegd aan winkelwagen`);
-              }}>
-                    Proeven
-                  </button>
+                  <motion.button 
+                    className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors font-['Work_Sans']" 
+                    onClick={e => handleAddToSampleBox(e, sandwich)}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {isInSampleBox(sandwich.id) ? "Toegevoegd" : "Proeven"}
+                  </motion.button>
                 </div>
               </div>
             </motion.div>)}
@@ -169,9 +196,26 @@ export const ProductGrid = () => {
                     {getAllergensList(selectedSandwich.allergens)}
                   </p>
                 </div>}
+                
+              <div className="mt-6">
+                <motion.button 
+                  className="w-full px-6 py-3 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold transition-colors" 
+                  onClick={e => {
+                    handleAddToSampleBox(e, selectedSandwich);
+                    setSelectedSandwich(null);
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  disabled={isInSampleBox(selectedSandwich.id) || isSampleBoxFull}
+                >
+                  {isInSampleBox(selectedSandwich.id) 
+                    ? "Toegevoegd aan proefpakket" 
+                    : isSampleBoxFull 
+                      ? "Proefpakket is vol" 
+                      : "Toevoegen aan proefpakket"}
+                </motion.button>
+              </div>
             </motion.div>
           </motion.div>}
       </AnimatePresence>
     </section>;
 };
-

@@ -7,22 +7,27 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import SampleRequest from "./pages/SampleRequest";
 import NotFound from "./pages/NotFound";
+import { SampleBoxProvider } from "@/contexts/SampleBoxContext";
+import { SampleBoxButton } from "@/components/SampleBoxButton";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter basename="/">
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/sample-request" element={<SampleRequest />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <SampleBoxProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/sample-request" element={<SampleRequest />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <SampleBoxButton />
+        </BrowserRouter>
+      </SampleBoxProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
