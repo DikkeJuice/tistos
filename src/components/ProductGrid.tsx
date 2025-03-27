@@ -40,7 +40,7 @@ export const ProductGrid = () => {
 
   return <section id="product-grid-section" className="py-24 bg-[#ffe7d1]">
       <div className="container max-w-6xl mx-auto px-4">
-        <h2 className="section-title text-center mb-16 font-poppins">
+        <h2 className="section-title text-center mb-16 font-merriweather text-[#003A40]">
           Ontdek al onze <span className="text-primary">tosti's</span>
         </h2>
         
