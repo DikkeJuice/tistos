@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useSampleBox } from "@/contexts/SampleBoxContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,7 +33,7 @@ export const SampleBoxButton = () => {
   }, [animatingSandwich]);
   
   const buttonPositionClass = isMobile 
-    ? "fixed top-4 right-4 z-40" 
+    ? "fixed top-[calc(100vh-220px)] right-4 z-40"  // Positioned above the sticky CTA bar
     : "fixed bottom-6 right-6 z-40";
   
   return (
