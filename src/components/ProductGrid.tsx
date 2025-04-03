@@ -65,7 +65,7 @@ export const ProductGrid = () => {
   return <section id="product-grid-section" className="py-24 bg-[#ffe7d1]">
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="section-title text-center mb-16 font-merriweather text-[#003A40]">
-          Ontdek al onze <span className="text-primary">tosti's</span>
+          Kies 10 gratis tosti's
         </h2>
         
         <p className="text-center text-lg text-[#003A40]/80 max-w-2xl mx-auto mb-16 font-['Work_Sans']">
