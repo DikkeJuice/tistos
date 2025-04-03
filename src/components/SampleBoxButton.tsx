@@ -13,7 +13,8 @@ export const SampleBoxButton = () => {
     removeFromSampleBox, 
     clearSampleBox,
     openSampleRequestForm,
-    setOpenSampleRequestForm
+    setOpenSampleRequestForm,
+    updateSandwichQuantity
   } = useSampleBox();
   
   const isMobile = useIsMobile();
@@ -36,6 +37,9 @@ export const SampleBoxButton = () => {
     ? "fixed top-[calc(100vh-173px)] right-4 z-40"  // Positioned 18px higher above the sticky CTA bar
     : "fixed bottom-6 right-6 z-40";
   
+  // Calculate total items count
+  const totalItems = sampleBox.reduce((sum, item) => sum + item.quantity, 0);
+  
   return (
     <>
       {/* Floating button */}
@@ -55,9 +59,9 @@ export const SampleBoxButton = () => {
             <Package className="h-6 w-6" />
           </div>
           
-          {sampleBox.length > 0 && (
+          {totalItems > 0 && (
             <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
-              {sampleBox.length}
+              {totalItems}
             </div>
           )}
         </motion.div>
@@ -73,26 +77,49 @@ export const SampleBoxButton = () => {
             >
               <h3 className="font-bold text-lg mb-2">Jouw proefpakket</h3>
               <p className="text-sm text-gray-600 mb-4">
-                {sampleBox.length === 0
+                {totalItems === 0
                   ? "Je proefpakket is nog leeg. Voeg tosti's toe om te proeven!"
-                  : `${sampleBox.length}/10 tosti's geselecteerd`}
+                  : `${totalItems}/10 tosti's geselecteerd`}
               </p>
               
-              {sampleBox.length > 0 && (
+              {totalItems > 0 && (
                 <div className="max-h-60 overflow-y-auto mb-4">
                   <ul className="space-y-2">
                     {sampleBox.map(sandwich => (
                       <li key={sandwich.id} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span className="text-sm">{sandwich.name}</span>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            removeFromSampleBox(sandwich.id);
-                          }}
-                          className="text-xs text-red-500 hover:text-red-700"
-                        >
-                          Verwijderen
-                        </button>
+                        <div className="flex items-center">
+                          <span className="text-sm">{sandwich.name}</span>
+                          <span className="text-xs text-gray-500 ml-2">({sandwich.quantity}x)</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              updateSandwichQuantity(sandwich.id, sandwich.quantity - 1);
+                            }}
+                            className="text-xs text-gray-700 hover:text-gray-900 p-1"
+                          >
+                            -
+                          </button>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              updateSandwichQuantity(sandwich.id, sandwich.quantity + 1);
+                            }}
+                            className="text-xs text-gray-700 hover:text-gray-900 p-1"
+                          >
+                            +
+                          </button>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeFromSampleBox(sandwich.id);
+                            }}
+                            className="text-xs text-red-500 hover:text-red-700 ml-1"
+                          >
+                            ✕
+                          </button>
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -112,7 +139,7 @@ export const SampleBoxButton = () => {
                   </button>
                 )}
                 
-                {sampleBox.length > 0 && (
+                {totalItems > 0 && (
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
