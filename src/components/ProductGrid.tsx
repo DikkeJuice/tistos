@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -13,7 +12,6 @@ export const ProductGrid = () => {
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
   const { addToSampleBox, isSampleBoxFull, isInSampleBox } = useSampleBox();
   
-  // Reference to store the position of the clicked button for animation
   const clickPositionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -50,10 +48,8 @@ export const ProductGrid = () => {
       return;
     }
     
-    // Store the position of the clicked button for animation
     clickPositionRef.current = { x: e.clientX, y: e.clientY };
     
-    // Add to sample box
     addToSampleBox(sandwich);
     toast.success(`${sandwich.name} toegevoegd aan je proefpakket`);
   };
@@ -72,6 +68,10 @@ export const ProductGrid = () => {
           Ontdek al onze <span className="text-primary">tosti's</span>
         </h2>
         
+        <p className="text-center text-lg text-[#003A40]/80 max-w-2xl mx-auto mb-16 font-['Work_Sans']">
+          Onze diverse collectie tosti's is samengesteld met zorg en passie. Van klassiek tot verrassend, er is altijd een tosti die perfect aansluit bij jouw smaak en voorkeur.
+        </p>
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sandwiches.map(sandwich => <motion.div key={sandwich.id} className="group cursor-pointer" whileHover={{
           scale: 1.05
@@ -83,9 +83,7 @@ export const ProductGrid = () => {
                 <div className="relative w-[105%] -left-[2.5%] -mt-8 mb-6">
                   <img src={sandwich.image_url} alt={sandwich.name} className="w-full h-48 object-contain rounded-xl transition-transform group-hover:scale-105" loading="lazy" />
                   
-                  {/* Badge container - positioned absolutely */}
                   <div className="absolute bottom-2 right-2 flex flex-col gap-2 items-end">
-                    {/* Halal badge */}
                     {sandwich.tags && sandwich.tags.includes("halal") && (
                       <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
                         <img 
@@ -97,7 +95,6 @@ export const ProductGrid = () => {
                       </Badge>
                     )}
                     
-                    {/* Vegetarian badge */}
                     {sandwich.tags && sandwich.tags.includes("vegetarisch") && (
                       <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
                         <img 
@@ -157,9 +154,7 @@ export const ProductGrid = () => {
 
               <img src={selectedSandwich.image_url} alt={selectedSandwich.name} className="w-full h-80 object-contain rounded-xl mb-6" />
               
-              {/* Badges in modal */}
               <div className="mb-4 flex gap-2 flex-wrap">
-                {/* Halal badge in modal if applicable */}
                 {selectedSandwich.tags && selectedSandwich.tags.includes("halal") && (
                   <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
                     <img 
@@ -171,7 +166,6 @@ export const ProductGrid = () => {
                   </Badge>
                 )}
                 
-                {/* Vegetarian badge in modal if applicable */}
                 {selectedSandwich.tags && selectedSandwich.tags.includes("vegetarisch") && (
                   <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
                     <img 
