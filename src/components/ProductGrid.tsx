@@ -64,9 +64,7 @@ export const ProductGrid = () => {
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="section-title text-center mb-16 font-merriweather text-[#003A40]">Genoeg gelul, proeven dat spul!</h2>
         
-        <p className="text-center text-lg text-[#003A40]/80 max-w-2xl mx-auto mb-16 font-['Work_Sans']">
-          Onze diverse collectie tosti's is samengesteld met zorg en passie. Van klassiek tot verrassend, er is altijd een tosti die perfect aansluit bij jouw smaak en voorkeur.
-        </p>
+        <p className="text-center text-lg text-[#003A40]/80 max-w-2xl mx-auto mb-16 font-['Work_Sans']">Stel zelf een proefpakket samen van 10 tosti's en laat je overtuigen door smaak in plaats van onze mooie praatjes :)</p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sandwiches.map(sandwich => <motion.div key={sandwich.id} className="group cursor-pointer" whileHover={{
