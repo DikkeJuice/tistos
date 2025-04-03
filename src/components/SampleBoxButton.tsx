@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useSampleBox } from "@/contexts/SampleBoxContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Package } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const SampleBoxButton = () => {
   const { 
@@ -15,6 +15,7 @@ export const SampleBoxButton = () => {
     setOpenSampleRequestForm
   } = useSampleBox();
   
+  const isMobile = useIsMobile();
   const [showDetails, setShowDetails] = useState(false);
   
   // Handle animating in sandwiches that are added to the box
@@ -30,11 +31,15 @@ export const SampleBoxButton = () => {
     }
   }, [animatingSandwich]);
   
+  const buttonPositionClass = isMobile 
+    ? "fixed top-4 right-4 z-40" 
+    : "fixed bottom-6 right-6 z-40";
+  
   return (
     <>
       {/* Floating button */}
       <motion.div 
-        className="fixed bottom-6 right-6 z-40"
+        className={buttonPositionClass}
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring" }}
