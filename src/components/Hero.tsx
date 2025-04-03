@@ -30,9 +30,7 @@ export const Hero = () => {
           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 py-24 md:py-16">
             {/* Title on mobile - shown above image */}
             {isMobile && <div className="mb-4 text-center">
-                <h1 className="font-['Merriweather'] font-bold text-4xl text-[#003A40] leading-tight">
-                  Nooit meer saaie tosti's
-                </h1>
+                <h1 className="font-['Merriweather'] font-bold text-4xl text-[#003A40] leading-tight">fanTOSTIsch!</h1>
               </div>}
             
             {/* Right side: Product image */}
