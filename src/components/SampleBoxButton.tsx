@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Package } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export const SampleBoxButton = () => {
   const { 
@@ -17,7 +16,6 @@ export const SampleBoxButton = () => {
   } = useSampleBox();
   
   const [showDetails, setShowDetails] = useState(false);
-  const isMobile = useIsMobile();
   
   // Handle animating in sandwiches that are added to the box
   const [animatingSandwich, setAnimatingSandwich] = useState<{ name: string; id: string } | null>(null);
@@ -31,17 +29,12 @@ export const SampleBoxButton = () => {
       return () => clearTimeout(timer);
     }
   }, [animatingSandwich]);
-
-  // Determine position class based on mobile or desktop
-  const positionClass = isMobile
-    ? "fixed top-16 right-4 z-40" // Top right for mobile, with space for the header
-    : "fixed bottom-6 right-6 z-40"; // Original position for desktop
   
   return (
     <>
-      {/* Floating button with updated positioning */}
+      {/* Floating button */}
       <motion.div 
-        className={positionClass}
+        className="fixed bottom-6 right-6 z-40"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring" }}
