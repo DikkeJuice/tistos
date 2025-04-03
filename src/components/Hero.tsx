@@ -46,8 +46,8 @@ export const Hero = () => {
                 {/* Price badge */}
                 <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-2 shadow-md">
                   <div className="flex flex-col items-center">
-                    <span className="line-through text-gray-400 text-sm">€15,95</span>
-                    <span className="text-[rgb(255,92,83)] font-bold text-xl">€12,95</span>
+                    <span className="line-through text-gray-400 text-sm">2 smaken</span>
+                    <span className="text-[rgb(255,92,83)] font-bold text-xl">14 smaken</span>
                   </div>
                 </div>
               </div>
