@@ -33,7 +33,7 @@ export const SampleBoxButton = () => {
   }, [animatingSandwich]);
   
   const buttonPositionClass = isMobile 
-    ? "fixed top-[calc(100vh-150px)] right-4 z-40"  // Positioned 16px above the sticky CTA bar (same as right spacing)
+    ? "fixed top-[calc(100vh-220px)] right-4 z-40"  // Positioned above the sticky CTA bar
     : "fixed bottom-6 right-6 z-40";
   
   return (
