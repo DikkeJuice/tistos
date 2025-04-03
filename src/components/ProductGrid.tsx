@@ -6,14 +6,18 @@ import type { Sandwich } from "@/types/sandwich";
 import { X } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useSampleBox } from "@/contexts/SampleBoxContext";
-
 export const ProductGrid = () => {
   const [sandwiches, setSandwiches] = useState<Sandwich[]>([]);
   const [selectedSandwich, setSelectedSandwich] = useState<Sandwich | null>(null);
-  const { addToSampleBox, isSampleBoxFull, isInSampleBox } = useSampleBox();
-  
-  const clickPositionRef = useRef({ x: 0, y: 0 });
-
+  const {
+    addToSampleBox,
+    isSampleBoxFull,
+    isInSampleBox
+  } = useSampleBox();
+  const clickPositionRef = useRef({
+    x: 0,
+    y: 0
+  });
   useEffect(() => {
     const fetchSandwiches = async () => {
       try {
@@ -26,34 +30,29 @@ export const ProductGrid = () => {
     };
     fetchSandwiches();
   }, []);
-
   const getAllergensList = (allergens: Sandwich['allergens']) => {
     return Object.entries(allergens).filter(([_, isPresent]) => isPresent).map(([allergen]) => allergen.charAt(0).toUpperCase() + allergen.slice(1)).join(", ");
   };
-
   const hasAllergens = (allergens: Sandwich['allergens']) => {
     return Object.values(allergens).some(isPresent => isPresent);
   };
-  
   const handleAddToSampleBox = (e: React.MouseEvent, sandwich: Sandwich) => {
     e.stopPropagation();
-    
     if (isSampleBoxFull) {
       toast.error("Je proefpakket zit vol! Maximaal 10 tosti's.");
       return;
     }
-    
     if (isInSampleBox(sandwich.id)) {
       toast.info(`${sandwich.name} zit al in je proefpakket`);
       return;
     }
-    
-    clickPositionRef.current = { x: e.clientX, y: e.clientY };
-    
+    clickPositionRef.current = {
+      x: e.clientX,
+      y: e.clientY
+    };
     addToSampleBox(sandwich);
     toast.success(`${sandwich.name} toegevoegd aan je proefpakket`);
   };
-
   if (!sandwiches.length) {
     return <div className="flex items-center justify-center min-h-[400px]">
       <div className="neuro-card animate-pulse">
@@ -61,12 +60,9 @@ export const ProductGrid = () => {
       </div>
     </div>;
   }
-
   return <section id="product-grid-section" className="py-24 bg-[#ffe7d1]">
       <div className="container max-w-6xl mx-auto px-4">
-        <h2 className="section-title text-center mb-16 font-merriweather text-[#003A40]">
-          Kies 10 gratis tosti's
-        </h2>
+        <h2 className="section-title text-center mb-16 font-merriweather text-[#003A40]">Genoeg gelul, proeven dat spul!</h2>
         
         <p className="text-center text-lg text-[#003A40]/80 max-w-2xl mx-auto mb-16 font-['Work_Sans']">
           Onze diverse collectie tosti's is samengesteld met zorg en passie. Van klassiek tot verrassend, er is altijd een tosti die perfect aansluit bij jouw smaak en voorkeur.
@@ -84,27 +80,15 @@ export const ProductGrid = () => {
                   <img src={sandwich.image_url} alt={sandwich.name} className="w-full h-48 object-contain rounded-xl transition-transform group-hover:scale-105" loading="lazy" />
                   
                   <div className="absolute bottom-2 right-2 flex flex-col gap-2 items-end">
-                    {sandwich.tags && sandwich.tags.includes("halal") && (
-                      <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
-                        <img 
-                          src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" 
-                          alt="Halal" 
-                          className="h-3 w-3" 
-                        />
+                    {sandwich.tags && sandwich.tags.includes("halal") && <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
+                        <img src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" alt="Halal" className="h-3 w-3" />
                         <span className="text-xs">Halal</span>
-                      </Badge>
-                    )}
+                      </Badge>}
                     
-                    {sandwich.tags && sandwich.tags.includes("vegetarisch") && (
-                      <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
-                        <img 
-                          src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//vega_crisp_blauw.svg" 
-                          alt="Vegetarisch" 
-                          className="h-3 w-3" 
-                        />
+                    {sandwich.tags && sandwich.tags.includes("vegetarisch") && <Badge variant="secondary" className="bg-white/90 hover:bg-white text-primary py-1 px-2 gap-1 font-['Work_Sans']">
+                        <img src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//vega_crisp_blauw.svg" alt="Vegetarisch" className="h-3 w-3" />
                         <span className="text-xs">Vega</span>
-                      </Badge>
-                    )}
+                      </Badge>}
                   </div>
                 </div>
 
@@ -115,11 +99,9 @@ export const ProductGrid = () => {
                   <p className="text-white/90 text-sm font-['Work_Sans']">
                     {sandwich.short_description}
                   </p>
-                  <motion.button 
-                    className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors font-['Work_Sans']" 
-                    onClick={e => handleAddToSampleBox(e, sandwich)}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                  <motion.button className="w-full px-6 py-3 bg-white/10 text-white hover:bg-white/20 rounded-xl font-semibold transition-colors font-['Work_Sans']" onClick={e => handleAddToSampleBox(e, sandwich)} whileTap={{
+                scale: 0.95
+              }}>
                     {isInSampleBox(sandwich.id) ? "Toegevoegd" : "Proeven"}
                   </motion.button>
                 </div>
@@ -155,27 +137,15 @@ export const ProductGrid = () => {
               <img src={selectedSandwich.image_url} alt={selectedSandwich.name} className="w-full h-80 object-contain rounded-xl mb-6" />
               
               <div className="mb-4 flex gap-2 flex-wrap">
-                {selectedSandwich.tags && selectedSandwich.tags.includes("halal") && (
-                  <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
-                    <img 
-                      src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" 
-                      alt="Halal" 
-                      className="h-3 w-3" 
-                    />
+                {selectedSandwich.tags && selectedSandwich.tags.includes("halal") && <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
+                    <img src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//halal_crisp_blauw.svg" alt="Halal" className="h-3 w-3" />
                     <span>Halal</span>
-                  </Badge>
-                )}
+                  </Badge>}
                 
-                {selectedSandwich.tags && selectedSandwich.tags.includes("vegetarisch") && (
-                  <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
-                    <img 
-                      src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//vega_crisp_blauw.svg" 
-                      alt="Vegetarisch" 
-                      className="h-3 w-3" 
-                    />
+                {selectedSandwich.tags && selectedSandwich.tags.includes("vegetarisch") && <Badge variant="secondary" className="bg-gray-100 text-primary py-1 px-2 gap-1">
+                    <img src="https://pxodqmbszdlzzkywkaop.supabase.co/storage/v1/object/public/vectors//vega_crisp_blauw.svg" alt="Vegetarisch" className="h-3 w-3" />
                     <span>Vega</span>
-                  </Badge>
-                )}
+                  </Badge>}
               </div>
               
               <h3 className="text-2xl font-bold mb-4 font-poppins pr-12">
@@ -192,20 +162,13 @@ export const ProductGrid = () => {
                 </div>}
                 
               <div className="mt-6">
-                <motion.button 
-                  className="w-full px-6 py-3 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold transition-colors" 
-                  onClick={e => {
-                    handleAddToSampleBox(e, selectedSandwich);
-                    setSelectedSandwich(null);
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  disabled={isInSampleBox(selectedSandwich.id) || isSampleBoxFull}
-                >
-                  {isInSampleBox(selectedSandwich.id) 
-                    ? "Toegevoegd aan proefpakket" 
-                    : isSampleBoxFull 
-                      ? "Proefpakket is vol" 
-                      : "Toevoegen aan proefpakket"}
+                <motion.button className="w-full px-6 py-3 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold transition-colors" onClick={e => {
+              handleAddToSampleBox(e, selectedSandwich);
+              setSelectedSandwich(null);
+            }} whileTap={{
+              scale: 0.95
+            }} disabled={isInSampleBox(selectedSandwich.id) || isSampleBoxFull}>
+                  {isInSampleBox(selectedSandwich.id) ? "Toegevoegd aan proefpakket" : isSampleBoxFull ? "Proefpakket is vol" : "Toevoegen aan proefpakket"}
                 </motion.button>
               </div>
             </motion.div>
