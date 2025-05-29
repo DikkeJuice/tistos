@@ -34,7 +34,7 @@ export const SampleBoxButton = () => {
   }, [animatingSandwich]);
   
   const buttonPositionClass = isMobile 
-    ? "fixed top-[calc(100vh-173px)] right-4 z-40"  // Positioned 18px higher above the sticky CTA bar
+    ? "fixed top-[calc(100vh-173px)] right-4 z-40"
     : "fixed bottom-6 right-6 z-40";
   
   // Calculate total items count
@@ -55,12 +55,12 @@ export const SampleBoxButton = () => {
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowDetails(!showDetails)}
         >
-          <div className="bg-primary text-white p-4 rounded-full shadow-lg flex items-center justify-center">
+          <div className="bg-gradient-to-r from-magenta to-coral text-white p-4 rounded-full shadow-xl flex items-center justify-center">
             <Package className="h-6 w-6" />
           </div>
           
           {totalItems > 0 && (
-            <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+            <div className="absolute -top-2 -right-2 bg-yellow text-navy text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-lg">
               {totalItems}
             </div>
           )}
@@ -73,10 +73,10 @@ export const SampleBoxButton = () => {
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
-              className="absolute bottom-16 right-0 bg-white rounded-lg shadow-xl p-4 w-64 sm:w-80"
+              className="absolute bottom-16 right-0 bg-white rounded-2xl shadow-2xl p-6 w-64 sm:w-80 border border-gray-100"
             >
-              <h3 className="font-bold text-lg mb-2">Jouw proefpakket</h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <h3 className="font-poppins font-bold text-xl mb-2 text-navy">Jouw proefpakket</h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 {totalItems === 0
                   ? "Je proefpakket is nog leeg. Voeg tosti's toe om te proeven!"
                   : `${totalItems}/10 tosti's geselecteerd`}
@@ -86,10 +86,10 @@ export const SampleBoxButton = () => {
                 <div className="max-h-60 overflow-y-auto mb-4">
                   <ul className="space-y-2">
                     {sampleBox.map(sandwich => (
-                      <li key={sandwich.id} className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                      <li key={sandwich.id} className="flex justify-between items-center p-3 bg-cream rounded-xl">
                         <div className="flex items-center">
-                          <span className="text-sm">{sandwich.name}</span>
-                          <span className="text-xs text-gray-500 ml-2">({sandwich.quantity}x)</span>
+                          <span className="text-sm font-medium text-navy">{sandwich.name}</span>
+                          <span className="text-xs text-muted-foreground ml-2 bg-white px-2 py-1 rounded-full">({sandwich.quantity}x)</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <button 
@@ -97,7 +97,7 @@ export const SampleBoxButton = () => {
                               e.stopPropagation();
                               updateSandwichQuantity(sandwich.id, sandwich.quantity - 1);
                             }}
-                            className="text-xs text-gray-700 hover:text-gray-900 p-1"
+                            className="text-xs bg-gray-200 hover:bg-gray-300 text-navy p-2 rounded-full w-6 h-6 flex items-center justify-center transition-colors"
                           >
                             -
                           </button>
@@ -106,7 +106,7 @@ export const SampleBoxButton = () => {
                               e.stopPropagation();
                               updateSandwichQuantity(sandwich.id, sandwich.quantity + 1);
                             }}
-                            className="text-xs text-gray-700 hover:text-gray-900 p-1"
+                            className="text-xs bg-gray-200 hover:bg-gray-300 text-navy p-2 rounded-full w-6 h-6 flex items-center justify-center transition-colors"
                           >
                             +
                           </button>
@@ -115,7 +115,7 @@ export const SampleBoxButton = () => {
                               e.stopPropagation();
                               removeFromSampleBox(sandwich.id);
                             }}
-                            className="text-xs text-red-500 hover:text-red-700 ml-1"
+                            className="text-xs text-red-500 hover:text-red-700 ml-1 p-1 hover:bg-red-50 rounded transition-colors"
                           >
                             ✕
                           </button>
@@ -126,14 +126,14 @@ export const SampleBoxButton = () => {
                 </div>
               )}
               
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 {sampleBox.length > 0 && (
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
                       clearSampleBox();
                     }}
-                    className="text-xs text-gray-500 hover:text-gray-700"
+                    className="text-xs text-muted-foreground hover:text-navy transition-colors"
                   >
                     Leegmaken
                   </button>
@@ -146,7 +146,7 @@ export const SampleBoxButton = () => {
                       setOpenSampleRequestForm(true);
                       setShowDetails(false);
                     }}
-                    className="bg-primary text-white px-4 py-1 rounded text-sm"
+                    className="bg-gradient-to-r from-turquoise to-cyan text-white px-6 py-2 rounded-lg text-sm font-semibold hover:scale-105 transition-transform shadow-lg"
                   >
                     Aanvragen
                   </button>
@@ -172,8 +172,8 @@ export const SampleBoxButton = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
-            <div className="bg-white p-2 rounded shadow">
-              <p className="text-sm">{animatingSandwich.name} toegevoegd!</p>
+            <div className="bg-gradient-to-r from-yellow to-gold text-navy p-3 rounded-xl shadow-lg">
+              <p className="text-sm font-semibold">{animatingSandwich.name} toegevoegd!</p>
             </div>
           </motion.div>
         )}
@@ -181,7 +181,7 @@ export const SampleBoxButton = () => {
       
       {/* Sample Request Form Dialog */}
       <Dialog open={openSampleRequestForm} onOpenChange={setOpenSampleRequestForm}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl">
           <SampleRequestForm onSuccess={() => {
             clearSampleBox();
             setOpenSampleRequestForm(false);

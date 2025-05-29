@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,8 +20,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
+        sans: ['Inter', 'Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
         merriweather: ['Merriweather', 'serif'],
         'work-sans': ['Work Sans', 'sans-serif'],
       },
@@ -31,7 +34,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#003a40",
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -58,6 +61,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // New vibrant colors
+        magenta: "hsl(var(--magenta))",
+        pink: "hsl(var(--pink))",
+        yellow: "hsl(var(--yellow))",
+        gold: "hsl(var(--gold))",
+        turquoise: "hsl(var(--turquoise))",
+        cyan: "hsl(var(--cyan))",
+        coral: "hsl(var(--coral))",
+        orange: "hsl(var(--orange))",
+        cream: "hsl(var(--cream))",
+        navy: "hsl(var(--navy))",
         toast: {
           DEFAULT: "#FDE1D3",
           hover: "#FEC6A1",
@@ -93,8 +107,15 @@ export default {
           },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "33%": { transform: "translateY(-20px) rotate(1deg)" },
+          "66%": { transform: "translateY(-10px) rotate(-1deg)" },
+        },
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
         },
         tilt: {
           "0%, 100%": { transform: "rotate(0deg)" },
@@ -104,15 +125,21 @@ export default {
         bounce: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-25%)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out",
-        "float": "float 3s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "blob": "blob 7s infinite",
         "tilt": "tilt 5s ease-in-out infinite",
         "bounce": "bounce 2s infinite",
+        "pulse": "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite",
       },
     },
   },
