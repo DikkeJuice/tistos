@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -250,7 +249,6 @@ export const ProductShowcase = () => {
                       animate={{ opacity: 1 }} 
                       transition={{ delay: 0.5 }} 
                       onClick={(e) => handleProevenClick(e, currentSandwich)}
-                      whileTap={{ scale: 0.95 }}
                     >
                       {getSandwichQuantity(currentSandwich.id) > 0 ? `${getSandwichQuantity(currentSandwich.id)}x toegevoegd` : "Proeven"}
                     </motion.button>
@@ -371,7 +369,6 @@ export const ProductShowcase = () => {
                       variant="vibrant"
                       className="w-full px-8 py-4 rounded-xl font-bold font-poppins text-lg"
                       onClick={() => setShowQuantityPicker(true)}
-                      whileTap={{ scale: 0.95 }}
                       disabled={isSampleBoxFull}
                     >
                       {isSampleBoxFull ? "Proefpakket is vol" : "Proeven"}
